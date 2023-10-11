@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img  style="height: 25%; padding-left: 25%;" src="../../../assets/icon/TellevoApppngblanco.png" >
+    <ion-card>
+      
+      <ion-card-header>
+        <img src="../../../assets/icon/tomatuviajeL.gif" >
+        <ion-card-title></ion-card-title>
+       
+      </ion-card-header>
+    
+      <ion-card-content>
+
+      </ion-card-content>
+    
+      <ion-button [routerLink]="['/viajes/']" fill="clear" class="centrado" color="warning">VIAJES</ion-button>
+      
+    </ion-card>
+
+    <ion-card>
+      
+      <ion-card-header>
+        <img src="../../../assets/icon/crearviajeL.gif" >
+        <ion-card-title></ion-card-title>
+        
+      </ion-card-header>
+    
+      <ion-card-content>
+
+      </ion-card-content>
+    
+      <ion-button [routerLink]="['/createviaje/']" fill="clear" class="centrado" color="warning">CREAR UN VIAJE</ion-button>
+      
+    </ion-card>
+</ion-content>

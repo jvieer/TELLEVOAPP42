@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaulutHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Viajes</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="map"></div>
+  <ion-img class="imgmapa" src="https://www.google.com/maps/d/thumbnail?mid=1EwsG3eLU6gk_NxsfCq66NLnOuys&hl=es"></ion-img>
+</ion-content>
+
+<ion-content>
+
+
+  
+  <ion-list>
+    <ion-item *ngFor="let aux of listaViajes" [routerLink]="['/viajes/']">
+      <ion-avatar slot="start">
+        <ion-img [src]=""></ion-img>
+      </ion-avatar>
+      <ion-label> </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

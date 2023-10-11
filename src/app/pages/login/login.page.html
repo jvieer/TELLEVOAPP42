@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Iniciar Sesion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  
+
+  <img  style="height: 35%; padding-left: 17%;" src="../../../assets/icon/login.gif" >
+
+
+  <ion-card-content [formGroup]="loginForm" >
+    <ion-list>
+      <ion-item>
+        <ion-input [(ngModel)]="emailValue" formControlName="email" type="email" label="Usuario" labelPlacement="floating" placeholder="Ingresar correo"
+        errorText="Invalid email"
+        ngModel
+        email
+        ></ion-input>
+        
+      </ion-item>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
+        El correo es requerido.
+      </ion-text>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
+        El correo es invalido.
+      </ion-text>
+      <ion-item>
+        <ion-input [(ngModel)]="passValue" formControlName="password" type="password"  label="Contraseña" labelPlacement="floating" placeholder="Ingresar contraseña"></ion-input>
+      </ion-item>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
+        La contraseña es requerida.
+      </ion-text>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
+       La contraseña debe tener al menos 6 caracteres.
+      </ion-text>
+      <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block">Ingresar</ion-button>
+       <ion-button [routerLink]="['/register']" shape="round"  expand="full">Registrarse</ion-button>
+    </ion-list>
+    <ion-list>
+      <ion-button [disabled]="!loginForm.valid" color="warning" style="width: 125px;" fill="outline" shape="round" (click)="pasajero()"><ion-icon name="accessibility"></ion-icon>
+      </ion-button><ion-button [disabled]="!loginForm.valid" color="warning" style=" width: 125px;" fill="outline" shape="round"[routerLink]="['/registro-c']"><ion-icon name="car-sport"></ion-icon></ion-button>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaulutHref="/viajes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img style="height: 35%; padding-left: 10%;" src="{{ viaje.imagen }}" />
+    <ion-card-header>
+      <ion-card-title>{{ viaje.nombre }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-card-subtitle>Comuna: {{ viaje.comuna }}</ion-card-subtitle>
+      <ion-card-subtitle>Fecha: {{ viaje.fecha }}</ion-card-subtitle>
+      <ion-card-subtitle>Hora: {{ viaje.hora }}</ion-card-subtitle>
+      <ion-card-subtitle>Disponible: {{ viaje.disponible }}</ion-card-subtitle>
+    </ion-card-content>
+    <ion-button [routerLink]="['/tomarviaje']" id="present-alert" class="botonviajar" color="warning" fill="outline">
+      <ion-icon slot="end" name="car" ></ion-icon>Viajar</ion-button>
+    
+  </ion-card>
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" >
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menú</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="home">
+              <ion-icon name="home" slot="start"></ion-icon>
+              <ion-label>Inicio</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="perfil">
+              <ion-icon name="person" slot="start"></ion-icon>
+              <ion-label>Perfil</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="login">
+              <ion-icon name="person-add" slot="start"></ion-icon>
+              <ion-label>Iniciar Sesion</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="register">
+              <ion-icon name="person-add" slot="start"></ion-icon>
+              <ion-label>Registrarse</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="login">
+              <ion-icon name="log-out" slot="start"></ion-icon>
+              <ion-label>Cerrar Sesion</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerLink]="['apihome']">
+              <ion-icon name="book" slot="start"></ion-icon>
+              <ion-label>Api</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

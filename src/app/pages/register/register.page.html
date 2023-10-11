@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>   
+   <ion-buttons slot="start">
+    <ion-back-button defaulutHref="/login"></ion-back-button>
+  </ion-buttons>
+    <ion-title style="text-align: center;">Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  <img  style="height: 35%; padding-left: 17%;" src="../../../assets/icon/Te llevoApp (1).gif" >
+  <ion-card-header>
+    <ion-card-title style="text-align: center;" >Registrate a la App</ion-card-title>
+    
+  </ion-card-header>
+
+  <ion-card-content >
+    <ion-list>
+
+      <ion-item>
+        <ion-input color="warning" type="email" label="Correo" labelPlacement="floating" placeholder="Ingresar correo"
+        errorText="Invalid email"
+        ngModel
+        email
+        ></ion-input>
+        
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" label="Usuario" labelPlacement="floating" placeholder="Ingresar usuario"
+        errorText="Invalid email"
+        ngModel
+        email
+        ></ion-input>
+        
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-input type="password"  label="Contraseña" labelPlacement="floating" placeholder="Ingresar contraseña"></ion-input>
+      </ion-item>
+      <ion-button color="warning" shape="round" fill="outline" expand="block">Registrarse</ion-button>
+       
+    </ion-list>
+
+  </ion-card-content>
+</ion-card>
