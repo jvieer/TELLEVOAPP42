@@ -1,0 +1,22 @@
+.texto-largo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px; /* Añade espaciado opcional en los lados */
+    text-align: justify;
+  }
+  
+  .texto-largo {
+    max-width: 100%;
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado largo */
+  }
+
+  .centrado2{
+    margin-left: 70px;
+    margin-right: 40px;
+    margin-block-end: 20px;
+    width: 160px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}

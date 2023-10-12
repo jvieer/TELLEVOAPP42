@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'cargando',
     pathMatch: 'full'
   },
   {
@@ -106,6 +106,11 @@ const routes: Routes = [
     path: 'apidetail',
     loadChildren: () => import('./pages/api/detail/detail.module').then( m => m.DetailPageModule)
   },
+  {
+    path: 'terminos',
+    loadChildren: () => import('./pages/terminos/terminos.module').then( m => m.TerminosPageModule)
+  },
+
 
 ];
 
