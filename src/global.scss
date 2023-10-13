@@ -32,3 +32,11 @@
     align-items: center;
     height: 100%;
 }
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+    width: 100vw;
+}

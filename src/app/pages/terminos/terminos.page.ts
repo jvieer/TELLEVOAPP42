@@ -9,7 +9,8 @@ import { NavController } from '@ionic/angular';
 export class TerminosPage implements OnInit {
   terminosAceptados = false;
   ngOnInit() {
-  }
+
+}
   constructor(private navCtrl: NavController) { }
   aceptarTerminos() {
     // Guarda el estado de términos aceptados y luego navega a la página principal.
@@ -21,6 +22,7 @@ export class TerminosPage implements OnInit {
     this.terminosAceptados = !this.terminosAceptados; // Cambia el estado del checkbox
   }
   
-  
+
+
 
 }

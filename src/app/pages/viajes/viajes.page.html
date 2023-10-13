@@ -1,3 +1,5 @@
+
+
 <ion-header [translucent]="true">
   
   <ion-toolbar>
@@ -7,9 +9,11 @@
     <ion-title style="text-align: center;">Tus viajes</ion-title>
   </ion-toolbar>
 </ion-header>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <ion-content>
+  <ion-searchbar (ionChange)="buscarViaje($event)" animated color="warning" placeholder="Buscar"></ion-searchbar>
   <div id="map"></div>
-  <ion-img class="imgmapa" src="https://www.google.com/maps/d/thumbnail?mid=1EwsG3eLU6gk_NxsfCq66NLnOuys&hl=es"></ion-img>
+  
 </ion-content>
 
 <ion-content>
@@ -17,7 +21,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" >
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-searchbar (ionChange)="buscarViaje($event)" animated color="warning" placeholder="Buscar"></ion-searchbar>
+  
   <ion-list>
     <ion-item *ngFor="let aux of listaViajes" [routerLink]="['/viajes/', aux.id]">
       <ion-avatar slot="start">

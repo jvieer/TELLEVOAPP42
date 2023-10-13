@@ -9,6 +9,8 @@ import { MenuController } from '@ionic/angular';
 })
 
 export class AppComponent {
+  showMenu: boolean = true; // Mostrar el menú por defecto
+  
   public appPages = [
     { title: 'Inicio', url: 'home', icon: 'home' },
     { title: 'Jugadores', url: 'jugadores', icon: 'people-circle' },
