@@ -8,10 +8,28 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <img  style="height: 25%; padding-left: 25%;" src="../../../assets/icon/TellevoApppngblanco.png" >
     <ion-card>
+      <ion-card >
+        <ion-list >
+          <ion-item [routerLink]="['/seguimiento']">
+            <ion-avatar slot="start">
+              <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoA2aUvQ5xLzWHJ4WJKHdRqTo4bKCzJCELkrAXSBRRBOatE_Ga_NyX8t5is4Iv4zbnCIU&usqp=CAU"></ion-img>
+            </ion-avatar>
+            <ion-label>Seguimiento</ion-label>
+          </ion-item>
       
+          <ion-item [routerLink]="['/misviajes']">
+            <ion-avatar slot="start">
+              <ion-img src="https://static.vecteezy.com/system/resources/thumbnails/003/694/243/small/car-icon-in-flat-style-simple-traffic-icon-free-vector.jpg"></ion-img>
+            </ion-avatar>
+            <ion-label>Mis viajes</ion-label>
+          </ion-item>
+          
+        </ion-list>
+      </ion-card>
       <ion-card-header>
         <img src="../../../assets/icon/tomatuviajeL.gif" >
         <ion-card-title></ion-card-title>

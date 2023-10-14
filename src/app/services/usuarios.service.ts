@@ -14,4 +14,7 @@ export class UsuariosService {
     return this.httpClient.get('https://randomuser.me/api');
 
   }
+  getUsers(count: number = 20) {
+    return this.httpClient.get(`https://randomuser.me/api/?results=${count}`);
+  }
 }

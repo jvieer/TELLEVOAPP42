@@ -40,3 +40,16 @@ html, body, #map {
     height: 100%;
     width: 100vw;
 }
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centra verticalmente la imagen */
+  }
+  
+  /* Estilo para la imagen */
+  .image {
+    
+    width: 250px; /* Ancho de la imagen de 250px */
+    height: auto; /* Esto mantiene la relación de aspecto original */
+  }

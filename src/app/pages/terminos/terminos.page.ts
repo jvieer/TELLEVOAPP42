@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-terminos',
@@ -17,12 +18,32 @@ export class TerminosPage implements OnInit {
     // Puedes usar el NavController para la navegación.
     this.terminosAceptados = true;
     this.navCtrl.navigateRoot('/login'); 
+    this.mensaje();
   }
   onCheckboxChange() {
     this.terminosAceptados = !this.terminosAceptados; // Cambia el estado del checkbox
+    
   }
   
 
+  mensaje(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Disfruta de la App!'
+    })
+  }
 
 
 }

@@ -3,54 +3,59 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export default class LoginPage implements OnInit {
-  toggleValue: boolean = false;
-  navCtrl: any;
-  //declaracion
-  loginForm: FormGroup //para validar el formulario
-  user: any //para obtener el usuario
-  emailValue?: string //para obtener el email del usuario
-  passValue?: String //para obtener la contra del usuario
+  loginForm: FormGroup;
+  user: any;
+  emailValue?: string;
+  passValue?: string;
 
   constructor(
-    private router : Router, 
-    private usuarios : UsuariosService,
+    private router: Router,
+    private usuarios: UsuariosService,
     private formBuilder: FormBuilder
-    ) { 
-      this.loginForm = this.formBuilder.group({
-        email:['',[Validators.required, Validators.email]],
-        password:['',[Validators.required, Validators.minLength(6)]],
-      })
-    }
+  ) { 
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]]
+    });
+  }
 
   ngOnInit() {
-    this.usuarios.getRandomuser().subscribe(
-      (data) => {
-        //console.log(data)
-        this.user = data.results[0]
-        this.emailValue = this.user.email
-        this.passValue = this.user.login.password
+    this.usuarios.getRandomuser().subscribe((data) => {
+      this.user = data.results[0];
+      const randomEmailPrefix = this.user.login.username;
 
-      })
+      // Cambiamos el dominio a conductor.com si es necesario
+      this.emailValue = `${randomEmailPrefix}@example.com`;
+      if (this.emailValue.endsWith('@conductor.com')) {
+        this.emailValue = this.emailValue.replace('@example.com', '@conductor.com');
+      }
+
+      this.passValue = this.user.login.password;
+    });
   }
-
   
-login() {
-    this.router.navigate(['home']);
-  }
+  login() {
+    const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
 
-conductor() {
-    this.router.navigate(['viajes-c']);
-  }
-pasajero() {
-    this.router.navigate(['viajes-p']);
-  }
+    if (email !== null && password !== null) {
+      let rol = "pasajero";
 
+      if (email.endsWith('@conductor.com')) {
+        rol = "conductor";
+      }
 
+      if (rol === "conductor") {
+        this.router.navigate(['viajes-c']);
+      } else {
+        this.router.navigate(['viajes-p']);
+      }
+    }
+  }
 }
