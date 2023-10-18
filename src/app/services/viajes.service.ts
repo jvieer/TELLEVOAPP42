@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { viajes } from '../pages/viajes/viajes.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IViajes } from '../interfaces/iviajes';
+import { IViajes } from 'src/app/interfaces/iviajes';
 import { environment } from 'src/environments/environment';
-import { IViaje } from '../interfaces/iviaje';
+import { IViaje } from 'src/app/interfaces/iviaje';
 
 @Injectable({
   providedIn: 'root'
@@ -55,9 +55,7 @@ export class ViajesService {
   ]
   constructor(private httpClient: HttpClient) { }
 
-  listViajes(): Observable<IViajes> {
-    return this.httpClient.get<IViajes>(`${environment.apiURL}/viajes`);
-  }
+
 
 
   getAll() {
@@ -74,9 +72,7 @@ export class ViajesService {
     }
   }
 
-  updateViajes(viaje: any): Observable<IViajes> {
-    return this.httpClient.post<IViajes>(`${environment.apiURL}/viajes/${viaje.id}`,viaje);
-  }
+ 
 
   addViaje(nombre: String, disponible: String, imagen: String, hora: String, fecha: String, comuna: String){
     this.viajes.push({
