@@ -109,10 +109,19 @@ const routes: Routes = [
   {
     path: 'terminos',
     loadChildren: () => import('./pages/terminos/terminos.module').then( m => m.TerminosPageModule)
-  },  {
+  },
+  {
     path: 'usuarios20',
     loadChildren: () => import('./pages/usuarios20/usuarios20.module').then( m => m.Usuarios20PageModule)
+  },  {
+    path: 'elegirconductor',
+    loadChildren: () => import('./pages/elegirconductor/elegirconductor.module').then( m => m.ElegirconductorPageModule)
   },
+
+ 
+
+  
+
 
 
 

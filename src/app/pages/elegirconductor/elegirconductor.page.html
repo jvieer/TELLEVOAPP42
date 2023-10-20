@@ -1,0 +1,26 @@
+<!-- elegir-conductor.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaulutHref="/viajes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Elegir Conductor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let conductor of conductores" (click)="verDetalleConductor(conductor)">
+      <ion-label>
+        <h2>Nombre: {{ conductor.nombre }}</h2>
+        <p>Auto: {{ conductor.auto }}</p>
+        <p>Comuna: {{ conductor.comuna }}</p>
+        <p>Disponible: {{ conductor.disponible }}</p>
+      </ion-label>
+      <ion-button (click)="mensajet()" fill="outline" shape="round" slot="end" class="ion-color-warning" color="warning"
+                 *ngIf="conductor.disponible === 'si'" [disabled]="conductor.disponible === 'no'">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

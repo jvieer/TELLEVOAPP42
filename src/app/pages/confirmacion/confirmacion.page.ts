@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-confirmacion',
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ConfirmacionPage implements OnInit {
 
   constructor() { }
+  
 
   ngOnInit() {
   }

@@ -6,6 +6,7 @@ import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 import 'leaflet-easybutton';
 import 'leaflet-control-geocoder';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-viajes',
@@ -73,6 +74,7 @@ export class ViajesPage implements OnInit {
       ],
       routeWhileDragging: true,
     }).addTo(this.map);
+
   }
 
   generarRuta() {
@@ -85,6 +87,7 @@ export class ViajesPage implements OnInit {
     // Parsea las coordenadas ingresadas por el usuario
     const inicio = this.parseCoordenadas(this.direccionInicio);
     const fin = this.parseCoordenadas(this.direccionDestino);
+    
 
     if (!inicio || !fin) {
       alert('Las coordenadas ingresadas son inválidas. Utiliza el formato "latitud, longitud".');
@@ -122,4 +125,23 @@ export class ViajesPage implements OnInit {
     }
     return null;
   }
+  
+
+  mensajep() {
+    Swal.fire({
+      title: '¿Estas seguro de tomar este viaje?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, tomar viaje',
+      heightAuto: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario ha confirmado, navega a la página "elegirconductor".
+        this.router.navigate(['elegirconductor']);
+      }
+    });
+  }
+
 }

@@ -30,7 +30,7 @@
         <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
          La contraseña debe tener al menos 4 caracteres.
         </ion-text>
-        <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block">Ingresar</ion-button>
+        <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block"  >Ingresar</ion-button>
         
       </ion-list>
   

@@ -17,4 +17,12 @@ export class UsuariosService {
   getUsers(count: number = 20) {
     return this.httpClient.get(`https://randomuser.me/api/?results=${count}`);
   }
+  guardarUsuario(usuario: any): Observable<any> {
+    // Asume que tienes una API en tu backend para guardar usuarios
+    // Ajusta la URL y el método HTTP (por ejemplo, POST) según tu API
+    const url = 'https://my-json-server.typicode.com/jvieer/jsonserver/usuarios';
+    
+    // Realiza una solicitud HTTP POST para guardar el usuario
+    return this.httpClient.post(url, usuario);
+  }
 }

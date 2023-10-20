@@ -30,7 +30,6 @@ export class AppComponent {
     { title: 'Cerrar Sesión', url: 'login', icon: 'log-out' },
   ];
   
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private router: Router,

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
+import { switchMap } from 'rxjs/operators';
 import { UsuariosService } from './usuarios.service';
 
 describe('UsuariosService', () => {

@@ -8,7 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-button expand="full" (click)="generarUsuarios()">Generar 20 Usuarios</ion-button>
+  <ion-list *ngIf="users.length > 0">
     <ion-item *ngFor="let user of users">
       <ion-avatar slot="start">
         <img [src]="user.picture.thumbnail" alt="User Thumbnail">
@@ -19,4 +20,6 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-note *ngIf="users.length === 0">Presiona el botón para generar usuarios.</ion-note>
 </ion-content>

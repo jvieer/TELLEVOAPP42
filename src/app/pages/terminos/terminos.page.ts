@@ -41,9 +41,10 @@ export class TerminosPage implements OnInit {
     
     Toast.fire({
       icon: 'success',
-      title: 'Disfruta de la App!'
+      title: 'gracias por aceptar los terminos!'
     })
   }
+  
 
 
 }
