@@ -53,3 +53,18 @@ html, body, #map {
     width: 250px; /* Ancho de la imagen de 250px */
     height: auto; /* Esto mantiene la relación de aspecto original */
   }
+  .leaflet-routing-container {
+    color: black;
+    max-height: 75px; /* Ajusta el tamaño máximo según tus necesidades */
+    overflow-y: auto;  /* Agrega una barra de desplazamiento vertical si es necesario */
+    position: absolute;
+    top: 300px;  /* Ajusta la distancia desde la parte superior del mapa */
+    right: 10px;  /* Ajusta la distancia desde la derecha del mapa */
+    background-color: white;  /* Establece el fondo de las instrucciones */
+    padding: 10px;  /* Añade espacio en blanco alrededor de las instrucciones */
+    border: 1px solid #ccc;  /* Agrega un borde al contenedor de instrucciones */
+    border-radius: 10px;  /* Hace que los bordes sean más rectangulares */
+    z-index: 1000;  /* Asegura que las instrucciones estén en la parte superior del mapa */
+    width: 280px;
+    
+  }

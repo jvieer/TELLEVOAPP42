@@ -10,25 +10,23 @@
   </ion-toolbar>
 </ion-header>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<div id="map" style="height: 400px;"></div>
 <ion-content>
-  <ion-searchbar (ionChange)="buscarViaje($event)" animated color="warning" placeholder="Buscar"></ion-searchbar>
-  <div id="map"></div>
-  
-</ion-content>
-
-<ion-content>
-
-  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" >
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   
   <ion-list>
-    <ion-item *ngFor="let aux of listaViajes" [routerLink]="['/viajes/', aux.id]">
-      <ion-avatar slot="start">
-        <ion-img [src]="aux.imagen"></ion-img>
-      </ion-avatar>
-      <ion-label>{{ aux.nombre }}</ion-label>
+    <ion-item>
+      <ion-label position="stacked">Dirección de inicio</ion-label>
+      <ion-input [(ngModel)]="direccionInicio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Dirección de destino</ion-label>
+      <ion-input [(ngModel)]="direccionDestino"></ion-input>
     </ion-item>
   </ion-list>
-  
+
+  <ion-button expand="full" (click)="generarRuta()">Generar Ruta</ion-button>
+
+ 
 </ion-content>
+
