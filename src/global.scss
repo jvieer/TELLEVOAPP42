@@ -54,6 +54,7 @@ html, body, #map {
     height: auto; /* Esto mantiene la relación de aspecto original */
   }
   .leaflet-routing-container {
+   // display: none;
     color: black;
     max-height: 75px; /* Ajusta el tamaño máximo según tus necesidades */
     overflow-y: auto;  /* Agrega una barra de desplazamiento vertical si es necesario */

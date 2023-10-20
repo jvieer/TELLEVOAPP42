@@ -29,6 +29,7 @@
     "ionic": "^5.4.16",
     "ionicons": "^7.0.0",
     "leaflet": "^1.7.1",
+    "leaflet-control-geocoder": "^2.4.0",
     "leaflet-easybutton": "^2.4.0",
     "leaflet-routing-machine": "^3.2.12",
     "rxjs": "~7.8.0",
