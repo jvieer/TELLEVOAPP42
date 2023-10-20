@@ -38,12 +38,27 @@ export class ElegirconductorPage implements OnInit {
       heightAuto: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Si el usuario ha confirmado, navega a la página "elegirconductor".
+        this.carga();
         this.router.navigate(['tomarviaje']);
       }
     });
   }
 
+  carga() {
+    Swal.fire({
+      imageUrl: 'https://i.pinimg.com/originals/6b/e0/89/6be0890f52e31d35d840d4fe2e10385b.gif',
+      imageHeight: 100,
+      showConfirmButton: false, // Oculta el botón "OK"
+      allowOutsideClick: false, // Evita que se cierre haciendo clic afuera
+      heightAuto: false
+    });
+  
+    // Simula un proceso de carga (puedes reemplazarlo con tu lógica real)
+    setTimeout(() => {
+      Swal.close();
+      // Redirige a la página 'home' después de cerrar el mensaje de carga
+    }, 1500); // Cambia el tiempo de espera según tus necesidades
+  }
 
   
 }

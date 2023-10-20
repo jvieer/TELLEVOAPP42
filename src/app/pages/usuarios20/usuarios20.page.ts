@@ -15,7 +15,7 @@ export class Usuarios20Page implements OnInit {
 
   constructor(private usuarios: UsuariosService) { }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
   ionViewWillEnter() {
@@ -31,7 +31,7 @@ export class Usuarios20Page implements OnInit {
         localStorage.setItem('generatedUsers', JSON.stringify(this.users));
       });
     }
-  }
+  } 
 
   generarUsuarios() {
     // Lógica para generar nuevos usuarios y guardarlos en el almacenamiento local
