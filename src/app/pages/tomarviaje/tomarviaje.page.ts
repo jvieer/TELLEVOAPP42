@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as SendBird from 'sendbird';
 
 @Component({
   selector: 'app-tomarviaje',

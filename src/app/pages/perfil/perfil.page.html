@@ -10,26 +10,38 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <img class="centrado" [src]="perfilData.image" alt="Imagen de perfil">
+  
     </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item>
           <ion-label>Nombre:</ion-label>
-       
-          <p>{{ perfilData.name }}</p>
+
+          <p>{{ swapiData.name }}</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Altura:</ion-label>
+
+          <p>{{ swapiData.height }}</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Peso:</ion-label>
+
+          <p>{{ swapiData.mass }}</p>
         </ion-item>
 
         <ion-item>
           <ion-label>Género:</ion-label>
-         
-          <p>{{ perfilData.gender }}</p>
+
+          <p>{{ swapiData.gender }}</p>
         </ion-item>
 
-        <ion-item *ngIf="perfilData.location">
-          <ion-label>Locación:</ion-label>
-        
-          <p>{{ perfilData.location.name }}</p>
+        <ion-item>
+          <ion-label>Planeta de origen:</ion-label>
+
+          <p>{{ swapiData.homeworld }}</p>
         </ion-item>
       </ion-list>
     </ion-card-content>
