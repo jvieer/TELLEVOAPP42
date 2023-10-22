@@ -133,6 +133,10 @@ const routes: Routes = [
     path: 'eliminarconductor',
     loadChildren: () => import('./pages/eliminarconductor/eliminarconductor.module').then( m => m.EliminarconductorPageModule)
   },
+  {
+    path: 'elimusuarios',
+    loadChildren: () => import('./pages/elimusuarios/elimusuarios.module').then( m => m.ElimusuariosPageModule)
+  },
 
 
  

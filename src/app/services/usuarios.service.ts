@@ -34,4 +34,14 @@ export class UsuariosService {
       map((usuarios: any[]) => usuarios.find(user => user.email === email && user.password === password))
     );
   }
+
+  eliminarUsuario(usuarioId: number) {
+    return this.httpClient.delete(`${this.apiURL}/${usuarioId}`);
+  }
+
+  getUsuarios(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.apiURL);
+  }
+
+
 }

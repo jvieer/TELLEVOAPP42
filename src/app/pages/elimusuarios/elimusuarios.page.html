@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Eliminar Usuario</ion-title> <!-- Cambia el título -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let usuario of usuarios"> <!-- Cambia "conductor" por "usuario" -->
+      <ion-label>
+        {{ usuario.nombre }} <!-- Cambia "conductor.nombre" por "usuario.nombre" -->
+      </ion-label>
+      <ion-button (click)="mensajeEliminar(usuario.id)" color="danger"> <!-- Cambia el evento y el color -->
+        <ion-icon name="trash"></ion-icon> Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
