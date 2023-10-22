@@ -137,6 +137,10 @@ const routes: Routes = [
     path: 'elimusuarios',
     loadChildren: () => import('./pages/elimusuarios/elimusuarios.module').then( m => m.ElimusuariosPageModule)
   },
+  {
+    path: 'detalleusuarios',
+    loadChildren: () => import('./pages/detalleusuarios/detalleusuarios.module').then( m => m.DetalleusuariosPageModule)
+  },
 
 
  

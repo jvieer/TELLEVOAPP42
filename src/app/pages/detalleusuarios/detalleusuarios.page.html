@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalles del Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-note>{{ usuario.nombre }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email:</ion-label>
+      <ion-note>{{ usuario.email }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña:</ion-label>
+      <ion-note>{{ usuario.contrasena }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rol:</ion-label>
+      <ion-note>{{ usuario.rol }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
