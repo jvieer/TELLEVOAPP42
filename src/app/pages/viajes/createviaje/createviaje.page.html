@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-     Viajes Disponibles
+      Create Viaje
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,13 +9,12 @@
 <ion-content>
   <ion-list>
     <ion-radio-group [(ngModel)]="viajeSeleccionado">
-      <ion-item *ngFor="let viaje of viajes">
+      <ion-item *ngFor="let viaje of viajes; let i = index">
         <ion-label>
-          <!-- Muestra la información detallada del viaje -->
-          <h2>{{ viaje.fecha }}</h2>
+          <!-- Muestra el título con el número de viaje -->
+          <h2>Viaje {{ i + 1 }}</h2>
+          <p>Fecha: {{ viaje.fecha }}</p>
           <p>Hora: {{ viaje.hora }}</p>
-          <p>Origen: {{ viaje.origen }}</p>
-          <p>Destino: {{ viaje.destino }}</p>
         </ion-label>
         <ion-radio slot="start" [value]="viaje.id"></ion-radio>
       </ion-item>
