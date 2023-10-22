@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 interface Viaje {
   origen: string;
   destino: string;
   fecha: string;
-  hora: string; // Agregamos el campo de hora
-  // ... otros campos de tu viaje
+  hora: string;
+  // Agrega otros campos de tu viaje
 }
 
 @Component({
@@ -19,12 +19,12 @@ export class TomarviajePage implements OnInit {
   viajeData: Viaje = {
     origen: '',
     destino: '',
-    fecha: '', // Inicialmente vacío
-    hora: '',  // Inicialmente vacío
+    fecha: '',
+    hora: '',
     // Completa con otros campos de tu viaje
   };
 
-  constructor(private viajesTomadosService: ViajesTomadosService) { }
+  constructor(private viajesTomadosService: ViajesTomadosService) {}
 
   ngOnInit() {
     // Inicializar la fecha y hora cuando se carga la página
@@ -34,28 +34,18 @@ export class TomarviajePage implements OnInit {
   }
 
   registerViajeTomado() {
-    this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(response => {
-      // Manejar la respuesta del servidor, si es necesario.
-      this.mensajetru();
-    });
-  }
-
-  mensajetru(){
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 1500,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
-    Toast.fire({
-      icon: 'success',
-      title: 'Viaje tomado con exito!'
-    })
+    // Validación: Asegúrate de que todos los campos estén llenos antes de guardar el viaje
+    if (this.viajeData.origen && this.viajeData.destino && this.viajeData.fecha && this.viajeData.hora) {
+      this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(
+        (response) => {
+          console.log('Viaje tomado con éxito', response);
+        },
+        (error) => {
+          console.error('Error al tomar el viaje', error);
+        }
+      );
+    } else {
+      console.error('Campos incompletos. Por favor, completa todos los campos antes de tomar el viaje.');
+    }
   }
 }

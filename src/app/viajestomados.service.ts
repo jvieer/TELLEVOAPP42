@@ -20,11 +20,11 @@ export class ViajesTomadosService {
   constructor(private http: HttpClient) { }
 
   createViajeTomado(viajeData: Viaje): Observable<any> {
-    return this.http.post(`${this.baseUrl}/viajestomados`, viajeData);
+    return this.http.post(`${this.baseUrl}/viajes`, viajeData);
   }
 
   getViajesTomados(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/viajestomados`);
+    return this.http.get(`${this.baseUrl}/viajes`);
   }
 
   eliminarViaje(id: number): Observable<any> {

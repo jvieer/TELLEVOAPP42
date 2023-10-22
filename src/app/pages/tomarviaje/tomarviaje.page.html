@@ -1,24 +1,39 @@
-<!-- tomarviaje.page.html -->
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title></ion-title>
+    <ion-title>
+      Tomar Viaje
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- Formulario para ingresar los datos del viaje -->
-  <ion-list>
-   
-    <ion-item>
-      <ion-label position="stacked">Fecha</ion-label>
-      <ion-input [(ngModel)]="viajeData.fecha" type="date" [value]="viajeData.fecha"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Hora</ion-label>
-      <ion-input [(ngModel)]="viajeData.hora" type="time" [value]="viajeData.hora"></ion-input>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      <form (ngSubmit)="registerViajeTomado()">
+        <ion-item>
+          <ion-label position="stacked">Origen</ion-label>
+          <ion-input [(ngModel)]="viajeData.origen" name="origen" required></ion-input>
+        </ion-item>
 
-  <!-- Botón para aceptar y guardar el viaje -->
-  <ion-button (click)="registerViajeTomado()">Aceptar</ion-button>
+        <ion-item>
+          <ion-label position="stacked">Destino</ion-label>
+          <ion-input [(ngModel)]="viajeData.destino" name="destino" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Fecha</ion-label>
+          <ion-input type="date" [(ngModel)]="viajeData.fecha" name="fecha" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Hora</ion-label>
+          <ion-input type="time" [(ngModel)]="viajeData.hora" name="hora" required></ion-input>
+        </ion-item>
+
+        <!-- Puedes agregar más campos según tus necesidades -->
+
+        <ion-button expand="full" type="submit">Tomar Viaje</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
