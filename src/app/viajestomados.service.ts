@@ -4,11 +4,9 @@ import { Observable } from 'rxjs';
 
 // Define el tipo de viaje
 interface Viaje {
-  // Define la estructura de un viaje, por ejemplo:
-  origen: string;
-  destino: string;
   fecha: string;
-  // ... otros campos
+  hora: string; // Agrega la propiedad hora
+  // Agrega otros campos si es necesario
 }
 
 @Injectable({
@@ -20,7 +18,7 @@ export class ViajesTomadosService {
   constructor(private http: HttpClient) { }
 
   createViajeTomado(viajeData: Viaje): Observable<any> {
-    return this.http.post(`${this.baseUrl}/viajes`, viajeData);
+    return this.http.post(`${this.baseUrl}/viajes`, viajeData); // Envía el objeto viajeData completo
   }
 
   getViajesTomados(): Observable<any> {
@@ -30,5 +28,4 @@ export class ViajesTomadosService {
   eliminarViaje(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/viajes/${id}`);
   }
-  
 }

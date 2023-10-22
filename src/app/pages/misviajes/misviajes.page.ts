@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
 import { HttpClient } from '@angular/common/http';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-misviajes',
@@ -16,9 +15,7 @@ export class MisviajesPage implements OnInit {
   constructor(private viajesTomadosService: ViajesTomadosService) {}
 
   ngOnInit() {
-    this.viajesTomadosService.getViajesTomados().subscribe((data: any) => {
-      this.misViajes = data;
-    });
+    this.loadMisViajes();
   }
 
   loadMisViajes() {
@@ -45,10 +42,8 @@ export class MisviajesPage implements OnInit {
       heightAuto: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.eliminarViaje(id); 
+        this.eliminarViaje(id);
       }
     });
   }
-
-  
 }

@@ -10,29 +10,21 @@
   <ion-card>
     <ion-card-content>
       <form (ngSubmit)="registerViajeTomado()">
-        <ion-item>
-          <ion-label position="stacked">Origen</ion-label>
-          <ion-input [(ngModel)]="viajeData.origen" name="origen" required></ion-input>
-        </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Destino</ion-label>
-          <ion-input [(ngModel)]="viajeData.destino" name="destino" required></ion-input>
-        </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Fecha</ion-label>
-          <ion-input type="date" [(ngModel)]="viajeData.fecha" name="fecha" required></ion-input>
+          <ion-input readonly="true" type="date" [(ngModel)]="viajeData.fecha" name="fecha" required></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Hora</ion-label>
-          <ion-input type="time" [(ngModel)]="viajeData.hora" name="hora" required></ion-input>
+          <ion-input readonly="true" type="time" [(ngModel)]="viajeData.hora" name="hora" required></ion-input>
         </ion-item>
 
         <!-- Puedes agregar más campos según tus necesidades -->
 
-        <ion-button expand="full" type="submit">Tomar Viaje</ion-button>
+        <ion-button expand="full" type="submit">Aceptar</ion-button>
       </form>
     </ion-card-content>
   </ion-card>

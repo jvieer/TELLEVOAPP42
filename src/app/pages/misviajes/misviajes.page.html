@@ -6,10 +6,11 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let viaje of misViajes">
+    <ion-item *ngFor="let viaje of misViajes; let i = index">
       <ion-label>
-        <h2>{{ viaje.origen }} - {{ viaje.destino }}</h2>
-        <p>Fecha: {{ viaje.fecha }}</p>
+        <h2>Viaje {{ i + 1 }}</h2> <!-- Muestra "Viaje" seguido de un número basado en el índice -->
+        <p>Fecha y Hora: {{ viaje.fecha }} {{ viaje.hora }}</p>
+        <!-- Asegúrate de que la propiedad "hora" contiene la hora en un formato adecuado -->
       </ion-label>
       <ion-button (click)="mensajedelete(viaje.id)" fill="clear" color="danger">
         <ion-icon slot="icon-only" name="trash"></ion-icon>

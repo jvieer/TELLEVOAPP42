@@ -3,8 +3,6 @@ import { ViajesTomadosService } from 'src/app/viajestomados.service';
 import Swal from 'sweetalert2';
 
 interface Viaje {
-  origen: string;
-  destino: string;
   fecha: string;
   hora: string;
   // Agrega otros campos de tu viaje
@@ -17,8 +15,6 @@ interface Viaje {
 })
 export class TomarviajePage implements OnInit {
   viajeData: Viaje = {
-    origen: '',
-    destino: '',
     fecha: '',
     hora: '',
     // Completa con otros campos de tu viaje
@@ -34,8 +30,8 @@ export class TomarviajePage implements OnInit {
   }
 
   registerViajeTomado() {
-    // Validación: Asegúrate de que todos los campos estén llenos antes de guardar el viaje
-    if (this.viajeData.origen && this.viajeData.destino && this.viajeData.fecha && this.viajeData.hora) {
+    console.log(this.viajeData); // Agrega este log para verificar el contenido de viajeData
+    if (this.viajeData.fecha.trim() !== '' && this.viajeData.hora.trim() !== '') {
       this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(
         (response) => {
           console.log('Viaje tomado con éxito', response);
