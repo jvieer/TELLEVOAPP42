@@ -26,6 +26,7 @@
     "@capacitor/core": "^5.5.0",
     "@ionic/angular": "^7.0.0",
     "@ionic/cli": "^7.1.1",
+    "bingmaps": "^2.0.3",
     "ionic": "^5.4.16",
     "ionicons": "^7.0.0",
     "leaflet": "^1.7.1",
