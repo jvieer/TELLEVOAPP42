@@ -30,4 +30,8 @@ export class ConductoresService {
   storeConductor(conductor: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/conductores`, conductor);
   }
+
+  eliminarConductor(conductorId: number) {
+    return this.http.delete(`${this.baseUrl}/conductores/${conductorId}`);
+  }
 }

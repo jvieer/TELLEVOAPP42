@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export default class LoginPage implements OnInit {
+export class LoginPage implements OnInit {
   loginForm: FormGroup;
   user: any;
   emailValue?: string;
@@ -53,7 +53,6 @@ export default class LoginPage implements OnInit {
       }
 
       if (rol === "conductor") {
-        
         this.router.navigate(['viajes-c']);
         this.carga();
       } else {
@@ -62,6 +61,7 @@ export default class LoginPage implements OnInit {
       }
     }
   }
+  
   carga() {
     Swal.fire({
       imageUrl: 'https://i.pinimg.com/originals/6b/e0/89/6be0890f52e31d35d840d4fe2e10385b.gif',
@@ -70,7 +70,7 @@ export default class LoginPage implements OnInit {
       allowOutsideClick: false, // Evita que se cierre haciendo clic afuera
       heightAuto: false
     });
-  
+
     // Simula un proceso de carga (puedes reemplazarlo con tu lógica real)
     setTimeout(() => {
       Swal.close();

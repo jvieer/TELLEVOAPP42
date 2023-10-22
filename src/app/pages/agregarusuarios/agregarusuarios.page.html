@@ -2,34 +2,35 @@
   <ion-toolbar>
     <ion-title>Agregar usuarios</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaulutHref="/add"></ion-back-button>
+      <ion-back-button defaultHref="/add"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="nuevoUsuario.nombre" name="nombre" required></ion-input>
-  </ion-item>
+  <form (ngSubmit)="agregarUsuario()" #usuarioForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nuevoUsuario.nombre" name="nombre" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Correo Electrónico</ion-label>
-    <ion-input type="email" [(ngModel)]="nuevoUsuario.email" name="email" required></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" [(ngModel)]="nuevoUsuario.email" name="email" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="nuevoUsuario.contrasena" name="contrasena" required></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="nuevoUsuario.contrasena" name="contrasena" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label>Rol</ion-label>
-    <ion-select [(ngModel)]="nuevoUsuario.rol" name="rol">
-      <ion-select-option value="conductor">Conductor</ion-select-option>
-      <ion-select-option value="pasajero">Pasajero</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-item>
+      <ion-label>Rol</ion-label>
+      <ion-select [(ngModel)]="nuevoUsuario.rol" name="rol" required>
+        <ion-select-option value="pasajero">Pasajero</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <ion-button color="warning" expand="full" (click)="agregarUsuario()">Agregar Usuario</ion-button>
+    <ion-button color="warning" expand="full" type="submit" [disabled]="!usuarioForm.valid">Agregar Usuario</ion-button>
+  </form>
 </ion-content>

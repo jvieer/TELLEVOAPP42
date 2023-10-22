@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import LoginPage from './login.page';
+import { LoginPage } from './login.page';
+
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import LoginPage from './login.page';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule, // Agrega HttpClientModule aquí
   ],
   declarations: [LoginPage]
 })

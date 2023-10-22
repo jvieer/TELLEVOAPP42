@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Viaje {
   fecha: string;
@@ -19,6 +20,7 @@ export class TomarviajePage implements OnInit {
     hora: '',
     // Completa con otros campos de tu viaje
   };
+    router: any;
 
   constructor(private viajesTomadosService: ViajesTomadosService) {}
 
@@ -35,6 +37,7 @@ export class TomarviajePage implements OnInit {
       this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(
         (response) => {
           console.log('Viaje tomado con éxito', response);
+          this.mensajer();
         },
         (error) => {
           console.error('Error al tomar el viaje', error);
@@ -44,4 +47,29 @@ export class TomarviajePage implements OnInit {
       console.error('Campos incompletos. Por favor, completa todos los campos antes de tomar el viaje.');
     }
   }
+
+
+
+  mensajer() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: 'success',
+      title: '¡Viaje tomado!'
+    }).then(() => {
+      // Redirigir al usuario a la página de inicio (home)
+      this.router.navigate(['/viajes-p']);
+    });
+  }
+  
 }

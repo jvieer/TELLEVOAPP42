@@ -1,30 +1,31 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2'
+import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregarusuarios',
   templateUrl: './agregarusuarios.page.html',
   styleUrls: ['./agregarusuarios.page.scss'],
 })
-export class AgregarusuariosPage implements OnInit {
+export class AgregarusuariosPage {
   nuevoUsuario = {
     nombre: '',
     email: '',
     contrasena: '',
-    rol: 'conductor',
+    rol: 'pasajero',
   };
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {}
 
   agregarUsuario() {
-    this.http.post('https://jsonserver-5flx.onrender.com/usuarios', this.nuevoUsuario)
-      .subscribe((response) => {
-        console.log('Usuario agregado con éxito', response);
-        this.mensajeu();
-      });
+    // Agregar usuario
+    this.http.post('https://jsonserver-5flx.onrender.com/usuarios', this.nuevoUsuario).subscribe((response: any) => {
+      console.log('Usuario agregado con éxito', response);
+      this.mensajeu();
+    });
   }
 
-  mensajeu(){
+  mensajeu() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -32,19 +33,14 @@ export class AgregarusuariosPage implements OnInit {
       timer: 1500,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
     Toast.fire({
       icon: 'success',
-      title: 'Usuario agregado!'
-    })
+      title: 'Usuario agregado!',
+    });
   }
-
-
-  ngOnInit() {
-  }
-
 }

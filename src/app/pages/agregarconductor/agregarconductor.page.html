@@ -2,45 +2,49 @@
   <ion-toolbar>
     <ion-title>Agregar conductor</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaulutHref="/add"></ion-back-button>
+      <ion-back-button defaultHref="/add"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">agregar conductor</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="nuevoConductor.nombre" name="nombre"></ion-input>
-  </ion-item>
+  <form (ngSubmit)="agregarConductor()" #conductorForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre del Conductor</ion-label>
+      <ion-input [(ngModel)]="nuevoConductor.nombre" name="nombre" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Auto</ion-label>
-    <ion-input [(ngModel)]="nuevoConductor.auto" name="auto"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Auto</ion-label>
+      <ion-input [(ngModel)]="nuevoConductor.auto" name="auto" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Comuna</ion-label>
-    <ion-input [(ngModel)]="nuevoConductor.comuna" name="comuna"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Comuna</ion-label>
+      <ion-input [(ngModel)]="nuevoConductor.comuna" name="comuna" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label>Disponible</ion-label>
-    <ion-select [(ngModel)]="nuevoConductor.disponible" name="disponible">
-      <ion-select-option value="si">Sí</ion-select-option>
-      <ion-select-option value="no">No</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-item>
+      <ion-label>Disponible</ion-label>
+      <ion-select [(ngModel)]="nuevoConductor.disponible" name="disponible" required>
+        <ion-select-option value="si">Sí</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <ion-button color="warning" expand="full" (click)="agregarConductor()">Agregar Conductor</ion-button>
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico (primera parte)</ion-label>
+      <ion-input type="text" [(ngModel)]="nuevoUsuario.email" name="email" required pattern="[^@]*"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="nuevoUsuario.contrasena" name="contrasena" required></ion-input>
+    </ion-item>
+
+    <ion-button color="warning" expand="full" type="submit" [disabled]="!conductorForm.valid">Agregar Conductor</ion-button>
+    <p style="color: red; text-align: center; margin-top: 10px;">
+      Si vas a crear un conductor, ten en cuenta que en el correo solo debes indicar la primera parte de este, hasta antes del @, ya que lo demás se completa solo poniendo @conductor.com.
+    </p>
+  </form>
 </ion-content>
-</ion-content>
-
-
