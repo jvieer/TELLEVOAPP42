@@ -1,45 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
-import { ViajesService } from 'src/app/services/viajes.service';
+import { ViajesTomadosService } from 'src/app/viajestomados.service';
+
 
 @Component({
   selector: 'app-createviaje',
   templateUrl: './createviaje.page.html',
   styleUrls: ['./createviaje.page.scss'],
 })
-export default class CreateviajePage implements OnInit {
-  
+export class CreateViajePage implements OnInit {
+  viajes: any[] = [];
+  viajeSeleccionado: number | null = null; // Inicializado como null
 
-  constructor(
-              private toastController:ToastController, 
-              private alertController:AlertController,
-              private viajeService: ViajesService,
-              private router: Router ) { }
+  constructor(private viajesService: ViajesTomadosService) {}
 
   ngOnInit() {
-  }
-  crearviaje() {
-    this.router.navigate(['viajes-c']);
+    this.loadViajes();
   }
 
-  async mensajeToast(mensaje: string){
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: 2000,
-      position: 'bottom' 
-    }); 
-    toast.present()
+  loadViajes() {
+    this.viajesService.getViajesTomados().subscribe((data) => {
+      this.viajes = data;
+    });
   }
 
-  deleteViaje() {
-    this.mensajeToast("VIAJE ELIMINADO!")
+  tomarViaje() {
+    if (this.viajeSeleccionado !== null) {
+      // Implementa la lógica para "tomar" el viaje seleccionado
+      console.log(`Viaje seleccionado: ${this.viajeSeleccionado}`);
+      // Si deseas desmarcarlo después de tomarlo, puedes hacerlo aquí
+      this.viajeSeleccionado = null;
+    } else {
+      // Muestra un mensaje de error o notificación si no se seleccionó ningún viaje.
+      console.log('Selecciona un viaje antes de tomarlo');
+    }
   }
-
-  addViaje(nombre: any,disponible: any,imagen: any,hora: any,fecha: any,comuna: any){
-    this.viajeService.addViaje(nombre.value,disponible.value,imagen.value,hora.value,fecha.value,comuna.value);
-    this.mensajeToast("VIAJE CREADO!")
-    this.router.navigate(['/viajes']);
-  }
-
 }
+
+
+
+
+
+

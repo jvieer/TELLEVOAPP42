@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CreateviajePageRoutingModule } from './createviaje-routing.module';
+import { CreateViajePage } from './createviaje.page';
 
-import CreateviajePage from './createviaje.page';
+
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import CreateviajePage from './createviaje.page';
     IonicModule,
     CreateviajePageRoutingModule
   ],
-  declarations: [CreateviajePage]
+  declarations: [CreateViajePage]
 })
 export class CreateviajePageModule {}

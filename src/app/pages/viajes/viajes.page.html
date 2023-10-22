@@ -11,7 +11,7 @@
 </ion-header>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <div id="map" style="height: 400px;"></div>
-<ion-content>
+
   
   <ion-list>
     <ion-item>
@@ -20,12 +20,10 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Dirección de destino</ion-label>
-      <ion-input [(ngModel)]="direccionDestino"></ion-input>
+      <ion-label position="stacked">Dirección de destino (DUOC UC) </ion-label>
+      <ion-input [(ngModel)]="direccionDestino" value="-33.59841678103484, -70.57914610490046" readonly></ion-input>
     </ion-item>
-  </ion-list>
 
   <ion-button style="width: 150px;" (click)="generarRuta()">Generar Ruta</ion-button><ion-button color="success" style="width: 150px;"(click)="mensajep()" (click)="generarRuta()">Aceptar</ion-button>
- 
-</ion-content>
+
 

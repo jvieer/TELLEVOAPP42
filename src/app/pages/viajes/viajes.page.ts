@@ -62,19 +62,23 @@ export class ViajesPage implements OnInit {
   ionViewDidEnter() {
     // Inicializa el mapa cuando la vista se carga completamente
     this.map = L.map('map').setView([-33.59846986791216, -70.57898785152217], 13);
-
+  
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
-
+  
     this.routingControl = L.Routing.control({
       waypoints: [
-        L.latLng(-33.59846986791216, -70.57898785152217), // Coordenadas de inicio
-        L.latLng(-33.60121401427903, -70.57747353188937), // Coordenadas de destino
+        L.latLng(-33.59841678103484, -70.57914610490046), // Coordenadas de inicio
+        L.latLng(-33.60121401427903, -70.57747353188937), // Coordenadas de destino (puedes dejar esto tal como está)
       ],
       routeWhileDragging: true,
     }).addTo(this.map);
+    
+     // Obtén la capa de ruta para acceder a los marcadores
 
+    // Establecer las coordenadas de destino en el input
+    this.direccionDestino = '-33.59841678103484, -70.57914610490046';
   }
 
   generarRuta() {

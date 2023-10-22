@@ -1,45 +1,26 @@
-
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaulutHref="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title  style="text-align: center;">Crea tu viaje</ion-title>
+    <ion-title>
+     Viajes Disponibles
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large" class="letra" >Crea tu viaje</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="viajeSeleccionado">
+      <ion-item *ngFor="let viaje of viajes">
+        <ion-label>
+          <!-- Muestra la información detallada del viaje -->
+          <h2>{{ viaje.fecha }}</h2>
+          <p>Hora: {{ viaje.hora }}</p>
+          <p>Origen: {{ viaje.origen }}</p>
+          <p>Destino: {{ viaje.destino }}</p>
+        </ion-label>
+        <ion-radio slot="start" [value]="viaje.id"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 
-    <ion-card>
-      <ion-card-content>
-        <ion-item>
-          <ion-input #nombre type="text" label="Nombre" labelPlacement="floating" placeholder="Ej: juan pinto"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input #disponible type="text" label="Disponible" labelPlacement="floating" placeholder="Ej: Si/No"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input #imagen type="text" label="Imagen" labelPlacement="floating" placeholder="Ej: https://"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input #hora type="text" label="Hora" labelPlacement="floating" placeholder="Ej: 13:00"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input #fecha type="text" label="Fecha" labelPlacement="floating" placeholder="Ej: 29/11/202"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input #comuna type="text" label="Comuna" labelPlacement="floating" placeholder="Ej: San bernardo"></ion-input>
-        </ion-item>
-        <ion-button color="warning" class="letra" (click)="addViaje(nombre,disponible,imagen,hora,fecha,comuna)">Agregar</ion-button>
-        <ion-button color="danger" class="letra" [routerLink]="['/viajes-conductor']" >Eliminar viajes</ion-button>
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
-
-
-  
+  <ion-button expand="full" (click)="tomarViaje()">Tomar Viaje</ion-button>
+</ion-content>
