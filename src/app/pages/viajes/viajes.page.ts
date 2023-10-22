@@ -112,6 +112,7 @@ export class ViajesPage implements OnInit {
 
     // Actualiza la ruta en el mapa
     this.routingControl.setWaypoints(coords);
+   
   }
 
   parseCoordenadas(coordenadas: string): [number, number] | null {

@@ -19,7 +19,11 @@ export class ElegirconductorPage implements OnInit {
       this.conductores = data;
     });
   }
-
+  seleccionarConductor(conductor: any) {
+    // Al seleccionar un conductor, almacena los datos en el servicio de conductores
+    this.conductoresService.setConductorSeleccionado(conductor);
+    console.log('Conductor seleccionado:', conductor);
+  }
   verDetalleConductor(conductor: any) {
     if (conductor.disponible === 'si') {
       this.router.navigate(['/detalles-conductor', conductor.id]);

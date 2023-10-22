@@ -113,10 +113,23 @@ const routes: Routes = [
   {
     path: 'usuarios20',
     loadChildren: () => import('./pages/usuarios20/usuarios20.module').then( m => m.Usuarios20PageModule)
-  },  {
+  },
+  {
     path: 'elegirconductor',
     loadChildren: () => import('./pages/elegirconductor/elegirconductor.module').then( m => m.ElegirconductorPageModule)
   },
+  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'agregarconductor',
+    loadChildren: () => import('./pages/agregarconductor/agregarconductor.module').then( m => m.AgregarconductorPageModule)
+  },  {
+    path: 'agregarusuarios',
+    loadChildren: () => import('./pages/agregarusuarios/agregarusuarios.module').then( m => m.AgregarusuariosPageModule)
+  },
+
 
  
 

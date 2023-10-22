@@ -1,11 +1,24 @@
+<!-- tomarviaje.page.html -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title ></ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
-  <ion-card>
-    <img  src="../../../assets/icon/viajetomado.gif" />
-    <ion-button [routerLink]="['/viajes-p']" id="present-alert" class="botonviajar" color="warning" >Volver al home</ion-button>
-    <ion-button [routerLink]="['/viajes']" color="danger" class="cancelar" fill="clear">Cancelar viaje</ion-button>
-  </ion-card>
 </ion-header>
 
+<ion-content>
+  <!-- Formulario para ingresar los datos del viaje -->
+  <ion-list>
+   
+    <ion-item>
+      <ion-label position="stacked">Fecha</ion-label>
+      <ion-input [(ngModel)]="viajeData.fecha" type="date" [value]="viajeData.fecha"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Hora</ion-label>
+      <ion-input [(ngModel)]="viajeData.hora" type="time" [value]="viajeData.hora"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón para aceptar y guardar el viaje -->
+  <ion-button (click)="registerViajeTomado()">Aceptar</ion-button>
+</ion-content>
