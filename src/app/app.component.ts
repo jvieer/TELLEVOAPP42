@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core/dist/public-api';
 
 @Component({
   selector: 'app-root',
@@ -31,10 +32,10 @@ export class AppComponent {
   ];
   
 
-  constructor(
-    private router: Router,
-    private menuController : MenuController
-  ) {}
+  constructor(private router: Router,private menuController : MenuController,private transService : TranslateService){
+    this.transService.setDefaultLang('fr');
+    this.transService.addLangs(['es','en']);
+  }
   
   mostrarMenu(){
     return this.router.url !== '/login';
@@ -46,6 +47,8 @@ export class AppComponent {
     //return this.router.url == '/apihome';
   }
  
+
+
 }
 
   

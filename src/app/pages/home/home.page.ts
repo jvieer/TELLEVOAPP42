@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export default class HomePage {
-
-  constructor(private router : Router) {}
+  langs: string[]= [];
+  idioma!: string;
+  constructor(private router : Router,
+              private transService: TranslateService) {
+                this.langs = this.transService.getLangs();
+              }
 
   login() {
     this.router.navigate(['home']);
@@ -16,4 +22,8 @@ export default class HomePage {
   crearviaje() {
     this.router.navigate(['viajes-c']);
   }  
+
+  changeLangs(event:any){
+    this.transService.use(event.detail.value);
+  }
 }

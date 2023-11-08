@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -27,7 +28,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.usuarios.getRandomuser().subscribe((data) => {
+    /*this.usuarios.getRandomuser().subscribe((data) => {
       this.user = data.results[0];
       const randomEmailPrefix = this.user.login.username;
 
@@ -39,6 +40,7 @@ export class LoginPage implements OnInit {
 
       this.passValue = this.user.login.password;
     });
+    */
   }
   
   login() {
