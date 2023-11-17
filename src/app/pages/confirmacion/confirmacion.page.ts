@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./confirmacion.page.scss'],
 })
 export class ConfirmacionPage implements OnInit {
-
+  texto:any;
   constructor() { }
   
 

@@ -23,7 +23,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

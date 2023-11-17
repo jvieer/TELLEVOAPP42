@@ -1,5 +1,7 @@
 {
   "name": "spideyapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

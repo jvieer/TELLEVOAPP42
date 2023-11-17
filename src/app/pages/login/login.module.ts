@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './login.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { LoginPage } from './login.page';
     LoginPageRoutingModule,
     ReactiveFormsModule,
     HttpClientModule, // Agrega HttpClientModule aquí
+    TranslateModule
   ],
   declarations: [LoginPage]
 })

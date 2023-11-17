@@ -26,6 +26,16 @@
       </ion-fab>
   
   </ion-card>
+
+  <ion-content>
+    <ion-text color="primary">
+      <h1>Generar QR</h1>
+    </ion-text>
+    <input type="text" [(ngModel)]="texto">
+    <br><br>
+    <qrcode [qrdata]="text" [width]="400"></qrcode>
+  </ion-content>
+
 </ion-header>
 
 

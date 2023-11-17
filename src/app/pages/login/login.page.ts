@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -11,16 +12,21 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+ 
   loginForm: FormGroup;
   user: any;
   emailValue?: string;
   passValue?: string;
+  langs: string[] = [];
+  idioma!: string;
 
   constructor(
     private router: Router,
     private usuarios: UsuariosService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private transService: TranslateService
   ) { 
+    this.langs = this.transService.getLangs();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]]
@@ -78,5 +84,9 @@ export class LoginPage implements OnInit {
       Swal.close();
       // Redirige a la página 'home' después de cerrar el mensaje de carga
     }, 1500); // Cambia el tiempo de espera según tus necesidades
+  }
+
+  changeLangs(event: any){
+    this.transService.use(event.detail.value);
   }
 }
