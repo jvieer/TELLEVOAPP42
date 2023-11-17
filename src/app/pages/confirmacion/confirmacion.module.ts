@@ -8,7 +8,6 @@ import { ConfirmacionPageRoutingModule } from './confirmacion-routing.module';
 
 import { ConfirmacionPage } from './confirmacion.page';
 
-import { QRCodeModule } from 'angularx-qrcode';
 @NgModule({
   imports: [
     CommonModule,
