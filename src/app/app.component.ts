@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core/dist/public-api';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
