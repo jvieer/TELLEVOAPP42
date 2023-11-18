@@ -52,10 +52,20 @@ export class RegisterPage implements OnInit {
         // Concatenar la parte seleccionada por el usuario y el dominio
         this.emailValue += '@' + this.getDomainForRole(this.selectedRole);
       }
-      
+  
       this.AuthService.register(this.emailValue, this.passValue);
+  
+      // Después de registrar, restablecer los valores y habilitar la edición del correo
+      this.emailValue = '';
+      this.passValue = '';
+      this.selectedRole = '';
+      this.isEmailEditable = true;
+  
+      // También puedes restablecer el formulario
+      this.loginForm.reset();
     }
   }
+  
 
   carga() {
     Swal.fire({
