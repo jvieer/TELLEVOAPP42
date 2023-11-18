@@ -8,12 +8,16 @@ import { TerminosPageRoutingModule } from './terminos-routing.module';
 
 import { TerminosPage } from './terminos.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TerminosPageRoutingModule
+    TerminosPageRoutingModule,
+    TranslateModule
+    
   ],
   declarations: [TerminosPage]
 })

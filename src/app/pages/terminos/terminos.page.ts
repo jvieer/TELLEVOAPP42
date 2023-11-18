@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-terminos',
@@ -8,11 +9,15 @@ import Swal from 'sweetalert2'
   styleUrls: ['./terminos.page.scss'],
 })
 export class TerminosPage implements OnInit {
+  langs: string[] = [];
+  idioma!: string;
   terminosAceptados = false;
   ngOnInit() {
 
 }
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController,private transService: TranslateService) {
+    this.langs = this.transService.getLangs();
+  }
   aceptarTerminos() {
     // Guarda el estado de términos aceptados y luego navega a la página principal.
     // Puedes usar el NavController para la navegación.
@@ -45,6 +50,8 @@ export class TerminosPage implements OnInit {
     })
   }
   
-
+  changeLangs(event: any){
+    this.transService.use(event.detail.value);
+  }
 
 }

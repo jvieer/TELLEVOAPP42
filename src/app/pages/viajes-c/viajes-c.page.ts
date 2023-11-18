@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-viajes-c',
@@ -6,14 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./viajes-c.page.scss'],
 })
 export default class ViajesCPage implements OnInit {
+  langs: string[] = [];
+  idioma!: string;
   router: any;
 
-  constructor() { }
+  constructor(private transService: TranslateService) {
+    this.langs = this.transService.getLangs();
+   }
 
   ngOnInit() {
   }
 
   conductor() {
+    
     this.router.navigate(['viajes-c']);
   }
+
+  changeLangs(event: any){
+    this.transService.use(event.detail.value);
+  }
+
 }

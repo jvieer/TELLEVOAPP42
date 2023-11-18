@@ -1,14 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title style="text-align: center;">Iniciar Sesioon</ion-title>
+    <ion-title style="text-align: center;">{{"IniciarSesion"|translate}}</ion-title>
+    
   </ion-toolbar>
-  <ion-item>
-    <ion-label>{{"selecciona"|translate}}</ion-label>
-    <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
-    <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
-  </ion-select>
-  </ion-item>
+
   <ion-card>
+    
     <img class="fotologin" src="../../../assets/icon/login.gif" >
     <ion-card-content [formGroup]="loginForm" >
       <ion-list>
@@ -21,22 +18,29 @@
           
         </ion-item>
         <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
-          El correo es requerido.
+          {{"Elcorreoesrequerido"|translate}}
         </ion-text>
         <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
-          El correo es invalido.
+          {{"Elcorreoesinvalido"|translate}}
         </ion-text>
         <ion-item>
           <ion-input [(ngModel)]="passValue" formControlName="password" type="password"  label="Contraseña" labelPlacement="floating" placeholder="Ingresar contraseña"></ion-input>
         </ion-item>
         <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
-          La contraseña es requerida.
+          {{"Lacontraseñaesrequerida"|translate}}
         </ion-text>
         <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
-         La contraseña debe tener al menos 4 caracteres.
+          {{"Lacontraseña"|translate}}
         </ion-text>
-        <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block"  >Ingresar</ion-button>
+        <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block"  >{{"ingresar"|translate}}</ion-button>
+        <ion-button   color="warning" shape="round" (click)="register()" fill="outline" expand="block"  >{{"registrarse"|translate}}</ion-button>
         
+        <ion-item>
+          <ion-label>{{"selecciona"|translate}}</ion-label>
+          <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+          <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+        </ion-select>
+        </ion-item>
       </ion-list>
   
     </ion-card-content>

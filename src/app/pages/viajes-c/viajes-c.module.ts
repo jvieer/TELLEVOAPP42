@@ -8,13 +8,16 @@ import { ViajesCPageRoutingModule } from './viajes-c-routing.module';
 
 import ViajesCPage from './viajes-c.page';
 import { CardComponent } from 'src/app/components/card/card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViajesCPageRoutingModule
+    ViajesCPageRoutingModule,
+    TranslateModule
+    
   ],
   declarations: [ViajesCPage,CardComponent]
 })

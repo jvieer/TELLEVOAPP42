@@ -1,5 +1,27 @@
 {
     "bienvenido" : "Welcome",
     "selecciona" : "Select",
-    "inicio" : "Home"
+    "inicio" : "Home",
+    "terminos" : "Terms and conditions",
+    "terminos1" : "Please read these Terms of Use (Terms) carefully before using the TellevoApp mobile application and associated services (hereinafter, the Application. By accessing or using the Application, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you must not use the Application.",
+    "terminos2" : "1. Using Hello App, TellevoApp provides a platform to connect drivers and passengers who want to travel by car. You must be over [minimum age] years old to use the Application as a passenger and over [minimum age] years old as a driver. You are responsible for providing accurate and up-to-date information in your profile.",
+    "terminos3" : "2. Reservations and Payments By using the Application to plan a trip, you agree to pay the fare indicated, which may include additional charges such as tolls and service charges. Payments will be processed through the [App Name] payment platform.",
+    "terminos4" : "3. Cancellations Users may cancel a scheduled trip by following the cancellation policies established in the Application.",
+    "terminos5" : "4. User Conduct Users of the Application should behave in a respectful manner and comply with all local laws and regulations. Illegal activities, inappropriate behavior and any form of harassment are prohibited.",
+    "terminos6" : "5. Intellectual property Tellevo owns all intellectual property rights relating to the Application. You may not copy, modify, distribute or use the content of the Application without authorization.",
+    "terminos7" : " 6. Limitation of Liability TellevoApp is not responsible for any loss or damage resulting from accidents, property damage or any other incident related to trips scheduled through the Application.",
+    "terminos8" : "7. Modifications to the Conditions TellevoApp reserves the right to modify these Conditions at any time. Changes will be notified to users via the Application.",
+    "terminos9" : " 8. Termination TellevoApp may suspend or terminate your account if you violate these Terms.",
+    "terminos10" : "9. Applicable Law These Terms are governed by the laws of [country/region] and any disputes will be resolved by arbitration or in the courts of [city]. By using the Application, you agree to these Terms and Conditions. If you do not agree with them, do not use the Application. For detailed information on the privacy policy, we invite you to consult our Privacy Policy.",
+    "gracias" : "Thank you for using TellevoApp and traveling safely.",
+    "lei" : "I have read and understood the terms",
+    "ingresar": "Go in",
+    "misviajes": "My trips",
+    "dispo": "Trips available",
+    "IniciarSesion" : "Log in",
+    "Elcorreoesrequerido" : "Email is required.",
+    "Elcorreoesinvalido" : "The email is invalid.",
+    "Lacontraseñaesrequerida" : "Password is required.",
+    "Lacontraseña" : "The password must be at least 4 characters.",
+    "registrarse" : "Check in"
 }

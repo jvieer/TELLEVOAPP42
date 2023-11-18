@@ -25,20 +25,13 @@
         ></ion-input>
         
       </ion-item>
-      <ion-item>
-        <ion-input type="email" label="Usuario" labelPlacement="floating" placeholder="Ingresar usuario"
-        errorText="Invalid email"
-        ngModel
-        email
-        ></ion-input>
-        
-      </ion-item>
+
     </ion-list>
     <ion-list>
       <ion-item>
         <ion-input type="password"  label="Contraseña" labelPlacement="floating" placeholder="Ingresar contraseña"></ion-input>
       </ion-item>
-      <ion-button color="warning" shape="round" fill="outline" expand="block">Registrarse</ion-button>
+      <ion-button (click)="register()"color="warning" shape="round" fill="outline" expand="block">Registrarse</ion-button>
        
     </ion-list>
 

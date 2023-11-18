@@ -1,6 +1,28 @@
 {
     "bienvenido" : "Bienvenue",
     "selecciona" : "Choisir",
-    "inicio" : "uuuuk"
+    "inicio" : "début",
+    "terminos" : "Termes et conditions",
+    "terminos1" : "Veuillez lire attentivement ces Conditions générales d'utilisation (Conditions) avant d'utiliser l'application mobile TellevoApp et les services associés (ci-après, l'Application. En accédant ou en utilisant l'Application, vous acceptez d'être lié par ces Conditions et notre Politique de confidentialité. Si vous ne le faites pas acceptez ces Conditions, vous ne devez pas utiliser l’Application.",
+    "terminos2" : " 1. Utilisation de l'application Hello, TellevoApp fournit une plate-forme permettant de mettre en relation les conducteurs et les passagers souhaitant voyager en voiture. Vous devez avoir plus de [âge minimum] ans pour utiliser l'Application en tant que passager et plus de [âge minimum] ans en tant que conducteur. Vous êtes responsable de fournir des informations exactes et à jour dans votre profil.",
+    "terminos3" : "2. Réservations et paiements En utilisant l'Application pour planifier un voyage, vous acceptez de payer le tarif indiqué, qui peut inclure des frais supplémentaires tels que des péages et des frais de service. Les paiements seront traités via la plateforme de paiement [Nom de l'application].",
+    "terminos4" : " 3. Annulations Les utilisateurs peuvent annuler un voyage programmé en suivant les politiques d'annulation établies dans l'Application.",
+    "terminos5" : "4. Conduite de l'utilisateur Les utilisateurs de l'Application doivent se comporter de manière respectueuse et se conformer à toutes les lois et réglementations locales. Les activités illégales, les comportements inappropriés et toute forme de harcèlement sont interdits.",
+    "terminos6" : "5. Propriété intellectuelle Tellevo détient tous les droits de propriété intellectuelle liés à l'Application. Vous ne pouvez pas copier, modifier, distribuer ou utiliser le contenu de l'Application sans autorisation.",
+    "terminos7" : " 6. Limitation de responsabilité TellevoApp n'est pas responsable de toute perte ou dommage résultant d'accidents, de dommages matériels ou de tout autre incident lié aux voyages programmés via l'Application.",
+    "terminos8" : " 7. Modifications des Conditions TellevoApp se réserve le droit de modifier les présentes Conditions à tout moment. Les modifications seront notifiées aux utilisateurs via l'Application.",
+    "terminos9" : " 8. Résiliation TellevoApp peut suspendre ou résilier votre compte si vous ne respectez pas ces Conditions.",
+    "terminos10" : "9. Loi applicable Les présentes conditions sont régies par les lois de [pays/région] et tout litige sera résolu par arbitrage ou devant les tribunaux de [ville]. En utilisant l'Application, vous acceptez les présentes Conditions générales. Si vous n’êtes pas d’accord avec eux, n’utilisez pas l’Application. Pour des informations détaillées sur la politique de confidentialité, nous vous invitons à consulter notre Politique de confidentialité.",
+    "gracias" : "Merci d'utiliser TellevoApp et de voyager en toute sécurité.",
+    "lei" : "J'ai lu et compris les termes",
+    "ingresar": "Entrer dans",
+    "misviajes": "Mes voyages",
+    "dispo": "Voyages disponibles",
+    "IniciarSesion" : "Se connecter",
+    "Elcorreoesrequerido" : "Un e-mail est requis.",
+    "Elcorreoesinvalido" : "L'e-mail n'est pas valide.",
+    "Lacontraseñaesrequerida" : "Mot de passe requis.",
+    "Lacontraseña" : "Le mot de passe doit comporter au moins 4 caractères.",
+    "registrarse" : "Enregistrement"
 }
 

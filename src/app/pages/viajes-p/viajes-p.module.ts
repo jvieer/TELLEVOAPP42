@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ViajesPPageRoutingModule } from './viajes-p-routing.module';
 
 import ViajesPPage from './viajes-p.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViajesPPageRoutingModule
+    ViajesPPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ViajesPPage]
 })

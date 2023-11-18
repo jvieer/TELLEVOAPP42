@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -7,11 +8,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
 
-  constructor(private auth: AngularFireAuth) { }
+  constructor(private auth: AngularFireAuth, private router: Router) { }
 
   async login(email: string, pass: string){
     try {
       const user = await this.auth.signInWithEmailAndPassword(email,pass);
+      this.router.navigate(['home']);
       console.log(user);
     } catch (error) {
       console.error('Error en login: ',error);

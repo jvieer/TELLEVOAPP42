@@ -2,89 +2,35 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-title>Términos y Condiciones</ion-title>
+    <ion-title>{{"terminos"|translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content class="texto-largo-container">
+  <ion-item>
+    <ion-label>{{"selecciona"|translate}}</ion-label>
+    <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+    <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+  </ion-select>
+  </ion-item>
   
-  <h5 class="texto-largo">Por favor, lee detenidamente estos Términos y Condiciones de Uso ("Términos") antes de utilizar la aplicación móvil TellevoApp y los servicios asociados 
-    (en adelante, la "Aplicación"). Al acceder o utilizar la Aplicación, aceptas estar sujeto a estos Términos y a nuestra Política de Privacidad. Si no estás de acuerdo con estos Términos, no debes utilizar la Aplicación.
-  </h5>
-  <h5 class="texto-largo">
-    1. Uso de la Aplicación hola
-
-    TellevoApp proporciona una plataforma para conectar a conductores con pasajeros que buscan viajar en auto.
-
-Debes ser mayor de [edad mínima] años para utilizar la Aplicación como pasajero y [edad mínima] años como conductor.
-
-Tienes la responsabilidad de proporcionar información precisa y actualizada en tu perfil.
-
-  </h5>
-
-  <h5 class="texto-largo">
-    2. Reservas y Pagos
-
-    Al utilizar la Aplicación para programar un viaje, aceptas pagar la tarifa indicada, que puede incluir cargos adicionales como peajes y tarifas de servicio.
-    
-    Los pagos se procesarán a través de la plataforma de pago de [Nombre de la Aplicación].
-  </h5>
-
-  <h5 class="texto-largo">
-    3. Cancelaciones
-
-    Los usuarios pueden cancelar un viaje programado siguiendo las políticas de cancelación establecidas en la Aplicación.
-  </h5>
-
-  <h5 class="texto-largo">
-    4. Conducta del Usuario
-
-    Se espera que los usuarios de la Aplicación se comporten de manera respetuosa y cumplan con todas las leyes y regulaciones locales.
-    
-    Se prohíben actividades ilegales, comportamiento inapropiado y cualquier forma de acoso.
-  </h5>
-
-  <h5 class="texto-largo">
-    5. Propiedad Intelectual
-
-    TellevoAppretiene todos los derechos de propiedad intelectual relacionados con la Aplicación.
-    
-    No puedes copiar, modificar, distribuir o utilizar contenido de la Aplicación sin autorización.
-  </h5>
-
-  <h5 class="texto-largo">
-
-    6. Limitación de Responsabilidad
-
-    TellevoApp no es responsable de pérdidas o daños resultantes de accidentes, daños a la propiedad o cualquier otro incidente relacionado con los viajes programados a través de la Aplicación.
-  </h5>
-
-    <h5 class="texto-largo">
-
-      7. Modificaciones a los Términos
-
-      TellevoApp se reserva el derecho de modificar estos Términos en cualquier momento. Las modificaciones se notificarán a los usuarios a través de la Aplicación.
-  </h5>
-
-  <h5 class="texto-largo">
-
-    8. Terminación
-
-    TellevoApppuede suspender o dar por terminada tu cuenta en caso de incumplimiento de estos Términos.
-</h5>
-
-<h5 class="texto-largo">
-
-  9. Ley Aplicable
-
-  Estos Términos se rigen por las leyes del [país/región] y cualquier disputa se resolverá mediante arbitraje o en los tribunales de [ciudad].
-  Al utilizar la Aplicación, aceptas estos Términos y Condiciones. Si no estás de acuerdo con ellos, no utilices la Aplicación. Para obtener información detallada sobre la política de privacidad, te invitamos a consultar nuestra Política de Privacidad.
-</h5>
-<p>Gracias por utilizar TellevoApp y viajar de manera segura.</p>
+  <h5 class="texto-largo">{{"terminos1"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos2"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos3"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos4"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos5"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos6"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos7"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos8"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos9"|translate}}</h5>
+  <h5 class="texto-largo">{{"terminos10"|translate}}</h5>
+  <p>{{"gracias"|translate}}</p>
 
 <ion-item>
-  <ion-checkbox (ionChange)="onCheckboxChange()" justify="end">Leí y comprendí los términos</ion-checkbox>
+  <ion-checkbox (ionChange)="onCheckboxChange()" justify="end">{{"lei"|translate}}</ion-checkbox>
 </ion-item>
 
-<ion-button (click)="aceptarTerminos()" class="centrado2" color="warning" [disabled]="!terminosAceptados">Ingresar</ion-button>
+<ion-button (click)="aceptarTerminos()" class="centrado2" color="warning" [disabled]="!terminosAceptados">{{"ingresar"|translate}}</ion-button>
 </ion-content>

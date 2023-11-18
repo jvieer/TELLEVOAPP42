@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title style="text-align: center;">Inicio</ion-title>
+    <ion-title style="text-align: center;">{{"inicio"|translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,14 +12,19 @@
 
   
   <img  style="height: 25%; padding-left: 25%;" src="../../../assets/icon/TellevoApppngblanco.png" >
-
+  <ion-item>
+    <ion-label>{{"selecciona"|translate}}</ion-label>
+    <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+    <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+  </ion-select>
+  </ion-item>
   <ion-card >
     <ion-list >
       <ion-item [routerLink]="['/misviajes']">
         <ion-avatar slot="start">
           <ion-img src="https://static.vecteezy.com/system/resources/thumbnails/003/694/243/small/car-icon-in-flat-style-simple-traffic-icon-free-vector.jpg"></ion-img>
         </ion-avatar>
-        <ion-label>Mis viajes</ion-label>
+        <ion-label>{{"misviajes"|translate}}</ion-label>
       </ion-item>
       
     </ion-list>
@@ -36,7 +41,7 @@
 
       </ion-card-content>
     
-      <ion-button [routerLink]="['/viajes']" fill="clear" class="centrado" color="warning">VIAJES DISPONIBLES</ion-button>
+      <ion-button [routerLink]="['/viajes']" fill="clear" class="centrado" color="warning">{{"dispo"|translate}}</ion-button>
       
     </ion-card>
 

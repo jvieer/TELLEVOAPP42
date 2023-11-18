@@ -125,7 +125,8 @@ const routes: Routes = [
   {
     path: 'agregarconductor',
     loadChildren: () => import('./pages/agregarconductor/agregarconductor.module').then( m => m.AgregarconductorPageModule)
-  },  {
+  },
+  {
     path: 'agregarusuarios',
     loadChildren: () => import('./pages/agregarusuarios/agregarusuarios.module').then( m => m.AgregarusuariosPageModule)
   },

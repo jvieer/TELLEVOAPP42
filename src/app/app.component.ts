@@ -33,8 +33,8 @@ export class AppComponent {
   
 
   constructor(private router: Router,private menuController : MenuController,private transService : TranslateService){
-    this.transService.setDefaultLang('fr');
-    this.transService.addLangs(['es','en']);
+    this.transService.setDefaultLang('es');
+    this.transService.addLangs(['fr','en','ja']);
   }
   
   mostrarMenu(){
