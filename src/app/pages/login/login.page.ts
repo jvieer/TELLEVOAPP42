@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
     this.langs = this.transService.getLangs();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -49,11 +49,7 @@ export class LoginPage implements OnInit {
   }
   
   register() {
-    if(this.emailValue && this.passValue){
-      this.AuthService.register(this.emailValue,this.passValue);
- 
-    }
-  
+    this.router.navigate(['register']);
   }
 
   carga() {
