@@ -16,9 +16,10 @@ export class RegisterPage implements OnInit {
   user: any;
   emailValue: string = '';
   passValue?: string;
-  selectedRole: string = ''; // Inicializar selectedRole
+  selectedRole: string = '';
   langs: string[] = [];
   idioma!: string;
+  isEmailEditable: boolean = true;
 
   constructor(
     private router: Router,
@@ -34,10 +35,8 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-  
   login() {
     if (this.emailValue && this.passValue) {
       this.AuthService.login(this.emailValue, this.passValue);
@@ -46,9 +45,12 @@ export class RegisterPage implements OnInit {
   
   register() {
     if (this.passValue && this.selectedRole) {
-      // Verifica si hay un correo electrónico, si no, genera uno basado en el rol
       if (!this.emailValue) {
         this.emailValue = this.generateEmailForRole(this.selectedRole);
+        this.isEmailEditable = false;
+      } else {
+        // Concatenar la parte seleccionada por el usuario y el dominio
+        this.emailValue += '@' + this.getDomainForRole(this.selectedRole);
       }
       
       this.AuthService.register(this.emailValue, this.passValue);
@@ -73,13 +75,22 @@ export class RegisterPage implements OnInit {
     this.transService.use(event.detail.value);
   }
 
-  // Genera un correo electrónico basado en el rol seleccionado
   generateEmailForRole(role: string): string {
     if (role === 'pasajero') {
-      return 'pasajero@example.com'; // Puedes personalizar el dominio según tus necesidades
+      return 'pasajero';
     } else if (role === 'conductor') {
-      return 'conductor@example.com'; // Puedes personalizar el dominio según tus necesidades
+      return 'conductor';
     }
     return '';
+  }
+
+  getDomainForRole(role: string): string {
+    return role === 'pasajero' ? 'gmail.com' : (role === 'conductor' ? 'conductor.com' : '');
+  }
+
+  updateEmail() {
+    if (!this.isEmailEditable) {
+      this.emailValue = this.generateEmailForRole(this.selectedRole);
+    }
   }
 }
