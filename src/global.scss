@@ -69,4 +69,6 @@ html, body, #map {
     width: 280px;
     
   }
-  
+  body {
+    overflow-y: auto; /* Cambia de 'scroll' a 'auto' */
+  }

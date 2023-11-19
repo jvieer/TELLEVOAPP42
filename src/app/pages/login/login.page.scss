@@ -1,4 +1,16 @@
+ion-card {
+    max-width: 400px; /* Ajusta el valor según tus necesidades */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+  }
+  ion-content {
+    height: auto;
+  }
 .fotologin{
     width: 500px;
     height: 300px;
 }
+.forgot-password-link {
+    color: rgb(72, 72, 218); /* Color del enlace */
+    text-decoration: underline; /* Subrayado para indicar que es un enlace */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+  }

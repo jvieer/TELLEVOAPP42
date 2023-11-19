@@ -1,56 +1,51 @@
+<!-- login.page.html -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title style="text-align: center;">{{"IniciarSesion"|translate}}</ion-title>
+    <ion-title style="text-align: center;">{{ "IniciarSesion" | translate }}</ion-title>
     <ion-item>
-      <ion-label>{{"selecciona"|translate}}</ion-label>
+      <ion-label>{{ "selecciona" | translate }}</ion-label>
       <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
-      <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
-    </ion-select>
+        <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
+      </ion-select>
     </ion-item>
-    
   </ion-toolbar>
+</ion-header>
 
-  <ion-card>
-    
-    <img class="fotologin" src="../../../assets/icon/login.gif" >
-    <ion-card-content [formGroup]="loginForm" >
+<ion-content class="ion-padding">
+  <ion-card class="ion-text-center">
+    <img class="fotologin" src="../../../assets/icon/login.gif" alt="Login Image">
+    <ion-card-content [formGroup]="loginForm">
       <ion-list>
         <ion-item>
-          <ion-input [(ngModel)]="emailValue" formControlName="email" type="email" label="Usuario" labelPlacement="floating" placeholder="Ingresar correo"
-          errorText="Invalid email"
-          ngModel
-          email
-          ></ion-input>
-          
+          <ion-label position="floating">{{ "Usuario" | translate }}</ion-label>
+          <ion-input [(ngModel)]="emailValue" formControlName="email" type="email" placeholder="Ingresar correo"></ion-input>
         </ion-item>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
-          {{"Elcorreoesrequerido"|translate}}
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
+          {{ "Elcorreoesrequerido" | translate }}
         </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
-          {{"Elcorreoesinvalido"|translate}}
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
+          {{ "Elcorreoesinvalido" | translate }}
         </ion-text>
         <ion-item>
-          <ion-input [(ngModel)]="passValue" formControlName="password" type="password"  label="Contraseña" labelPlacement="floating" placeholder="Ingresar contraseña"></ion-input>
+          <ion-label position="floating">{{ "Contraseña" | translate }}</ion-label>
+          <ion-input [(ngModel)]="passValue" formControlName="password" type="password" placeholder="Ingresar contraseña"></ion-input>
         </ion-item>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
-          {{"Lacontraseñaesrequerida"|translate}}
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
+          {{ "Lacontraseñaesrequerida" | translate }}
         </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
-          {{"Lacontraseña"|translate}}
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
+          {{ "Lacontraseña" | translate }}
         </ion-text>
-        <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block"  >{{"ingresar"|translate}}</ion-button>
-        <ion-button   color="warning" shape="round" (click)="register()" fill="outline" expand="block"  >{{"registrarse"|translate}}</ion-button>
-        
-        <form [formGroup]="loginForm">
-          <!-- Campos de correo electrónico y contraseña -->
-      
-          <!-- Nuevo botón de recuperar contraseña -->
-          <ion-button expand="full" (click)="recoverPassword()">
-            Recuperar Contraseña
-          </ion-button>
-        </form>
+        <ion-button [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block">
+          {{ "ingresar" | translate }}
+        </ion-button>
+        <ion-button color="warning" shape="round" (click)="register()" fill="outline" expand="block">
+          {{ "registrarse" | translate }}
+        </ion-button>
       </ion-list>
-  
     </ion-card-content>
+    <div class="forgot-password-link" (click)="showRecoverPasswordPrompt()">
+      {{ "Olvidaste tu contraseña?" | translate }}
+    </div>
   </ion-card>
-</ion-header>
+</ion-content>

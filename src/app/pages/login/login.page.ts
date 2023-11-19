@@ -85,4 +85,45 @@ export class LoginPage implements OnInit {
       }
     }
   }
+  async showRecoverPasswordPrompt() {
+    const { value: email, dismiss } = await Swal.fire({
+      title: 'Recuperar Contraseña',
+      input: 'email',
+      inputPlaceholder: 'Ingresa tu correo electrónico',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Enviar',
+      inputValidator: (value) => {
+        if (!value || !value.trim()) {
+          return 'Por favor, ingresa tu correo electrónico';
+        }
+
+        return undefined; // Retorna undefined cuando no hay errores
+      },
+      heightAuto: false, // Controla la altura de la ventana emergente
+    });
+
+    if (dismiss === Swal.DismissReason.cancel) {
+      // El usuario hizo clic en Cancelar
+      return;
+    }
+
+    if (email) {
+      try {
+        await this.AuthService.recoverPassword(email);
+        Swal.fire({
+          title: 'Correo de recuperación enviado con éxito',
+          heightAuto: false, // Controla la altura de la ventana emergente
+          icon: 'success',
+        });
+      } catch (error) {
+        Swal.fire({
+          title: 'Error al enviar el correo de recuperación',
+          heightAuto: false, // Controla la altura de la ventana emergente
+          icon: 'error',
+        });
+        console.error('Error al enviar el correo de recuperación: ', error);
+      }
+    }
+  }
 }
