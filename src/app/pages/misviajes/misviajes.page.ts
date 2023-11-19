@@ -18,14 +18,16 @@ export class MisviajesPage implements OnInit {
   }
 
   async loadMisViajes() {
-    try {
-      const data = await this.viajesTomadosService.getViajesTomados().toPromise();
-      this.misViajes = data || []; // Asigna un array vacío si data es undefined
-    } catch (error) {
-      console.error('Error al cargar los viajes tomados', error);
-    }
+    this.viajesTomadosService.getViajesTomados().subscribe(
+      data => {
+        console.log('Datos recibidos:', data);
+        this.misViajes = data || [];
+      },
+      error => {
+        console.error('Error al cargar los viajes tomados', error);
+      }
+    );
   }
-
   async eliminarViaje(id: string) {
     try {
       await this.viajesTomadosService.eliminarViaje(id);
