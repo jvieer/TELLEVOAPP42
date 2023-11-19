@@ -30,7 +30,8 @@
     "pasajero" : "pasajero",
     "conductor" : "conductor",
     "eqr" : "Escanear QR",
-    "rojo" : "Si vas a registarte, ten en cuenta que en el correo solo debes indicar la primera parte de este, hasta antes del @, ya que lo demás se completa."
+    "rojo" : "Si vas a registarte, ten en cuenta que en el correo solo debes indicar la primera parte de este, hasta antes del @, ya que lo demás se completa.",
+    "crea" : "CREA TU VIAJE"
 
 
 

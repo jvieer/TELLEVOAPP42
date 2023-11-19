@@ -20,6 +20,10 @@ export class RegisterPage implements OnInit {
   langs: string[] = [];
   idioma!: string;
   isEmailEditable: boolean = true;
+  nombreValue: string = '';
+  autoValue: string = '';
+  comunaValue: string = '';
+  disponibleValue: boolean = false;
 
   constructor(
     private router: Router,
@@ -32,40 +36,46 @@ export class RegisterPage implements OnInit {
       email: [''],
       password: ['', [Validators.required, Validators.minLength(6)]],
       role: ['', Validators.required],
+      nombre: [''],
+      auto: [''],
+      comuna: [''],
+      disponible: [''],
     });
   }
 
   ngOnInit() {}
 
-  login() {
-    if (this.emailValue && this.passValue) {
-      this.AuthService.login(this.emailValue, this.passValue);
-    }
-  }
-  
   register() {
     if (this.passValue && this.selectedRole) {
       if (!this.emailValue) {
         this.emailValue = this.generateEmailForRole(this.selectedRole);
         this.isEmailEditable = false;
       } else {
-        // Concatenar la parte seleccionada por el usuario y el dominio
         this.emailValue += '@' + this.getDomainForRole(this.selectedRole);
       }
-  
-      this.AuthService.register(this.emailValue, this.passValue);
-  
-      // Después de registrar, restablecer los valores y habilitar la edición del correo
+
+      const additionalInfo = {
+        nombre: this.nombreValue,
+        auto: this.autoValue,
+        comuna: this.comunaValue,
+        disponible: this.disponibleValue,
+        // Agregar otros campos según sea necesario
+      };
+
+      this.AuthService.register(this.emailValue, this.passValue, additionalInfo);
+
       this.emailValue = '';
       this.passValue = '';
       this.selectedRole = '';
+      this.nombreValue = '';
+      this.autoValue = '';
+      this.comunaValue = '';
+      this.disponibleValue = false;
       this.isEmailEditable = true;
-  
-      // También puedes restablecer el formulario
+
       this.loginForm.reset();
     }
   }
-  
 
   carga() {
     Swal.fire({

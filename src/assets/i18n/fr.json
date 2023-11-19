@@ -30,7 +30,8 @@
     "pasajero": "passager",
     "conductor": "conducteur",
     "eqr" : "Scanner le QR",
-    "rojo" : "Si vous envisagez de vous inscrire, gardez à l'esprit que dans l'e-mail, vous ne devez en indiquer que la première partie, même avant le @, puisque le reste est terminé."
+    "rojo" : "Si vous envisagez de vous inscrire, gardez à l'esprit que dans l'e-mail, vous ne devez en indiquer que la première partie, même avant le @, puisque le reste est terminé.",
+    "crea" : "CRÉEZ VOTRE VOYAGE"
 
 }
 

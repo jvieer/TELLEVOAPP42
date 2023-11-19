@@ -6,25 +6,26 @@
     <ion-title style="text-align: center;">Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-item>
-  <ion-label>{{"selecciona"|translate}}</ion-label>
-  <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
-  <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
-</ion-select>
-</ion-item>
-<ion-content>
 
+<ion-content>
+  <ion-item>
+    <ion-label>{{"selecciona"|translate}}</ion-label>
+    <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+    <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+  </ion-select>
+  </ion-item>
+  <img  style="height: 25%; padding-left: 25%;" src="../../../assets/icon/TellevoApppngblanco.png" >
   <ion-card >
     <ion-list >
       <ion-item [routerLink]="['/generarqr']">
         <ion-avatar slot="start">
-          <ion-img src="https://static.vecteezy.com/system/resources/thumbnails/003/694/243/small/car-icon-in-flat-style-simple-traffic-icon-free-vector.jpg"></ion-img>
+          <ion-img src="https://play-lh.googleusercontent.com/lomBq_jOClZ5skh0ELcMx4HMHAMW802kp9Z02_A84JevajkqD87P48--is1rEVPfzGVf"></ion-img>
         </ion-avatar>
         <ion-label>{{"qr"|translate}}</ion-label>
       </ion-item>
       
     </ion-list>
   </ion-card>
-  <img  style="height: 25%; padding-left: 25%;" src="../../../assets/icon/TellevoApppngblanco.png" >
-<app-card titulo="CREA TU VIAJE" imagen="../../../assets/icon/crearviajeL.gif"></app-card>
+  
+<app-card imagen="../../../assets/icon/crearviajeL.gif">{{"crea"|translate}}</app-card>
 </ion-content>

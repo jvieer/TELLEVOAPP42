@@ -1,4 +1,11 @@
 .fotologin{
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 280px;
 }
+ion-card {
+    max-width: 400px; /* Ajusta el valor según tus necesidades */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+  }
+  ion-content {
+    height: auto;
+  }

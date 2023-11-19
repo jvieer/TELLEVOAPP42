@@ -30,5 +30,6 @@
     "pasajero": "passenger",
     "conductor": "driver",
     "eqr" : "Scan QR",
-    "rojo" : "If you are going to register, keep in mind that in the email you should only indicate the first part of it, even before the @, since the rest is completed."
+    "rojo" : "If you are going to register, keep in mind that in the email you should only indicate the first part of it, even before the @, since the rest is completed.",
+    "crea" : "CREATE YOUR TRIP"
 }

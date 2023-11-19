@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  constructor(private auth: AngularFireAuth, private firestore: AngularFirestore, private router: Router) { }
 
   async login(email: string, pass: string){
     try {
@@ -19,10 +20,14 @@ export class AuthService {
     }
   }
 
-  async register(email: string, pass: string){
+  async register(email: string, pass: string, additionalInfo: any){
     try {
       const user = await this.auth.createUserWithEmailAndPassword(email, pass);
       await this.handleUserRedirect(user);
+
+      // Guardar información adicional en Firestore
+      await this.saveAdditionalInfo(user.user?.uid, email, additionalInfo);
+
       console.log(user);
     } catch (error) {
       console.error('Error en register: ', error);
@@ -45,6 +50,15 @@ export class AuthService {
     }
   }
 
+  async saveAdditionalInfo(uid: string | undefined, email: string, additionalInfo: any) {
+    if (uid) {
+      await this.firestore.collection('conductores').doc(uid).set({
+        email: email,
+        ...additionalInfo
+      });
+    }
+  }
+
   async logout(){
     try {
       await this.auth.signOut(); 
@@ -60,7 +74,7 @@ export class AuthService {
       })
     })
   }
-  
+
   async recoverPassword(email: string) {
     try {
       await this.auth.sendPasswordResetEmail(email);
@@ -68,8 +82,8 @@ export class AuthService {
       throw error; // Puedes manejar el error aquí o dejar que el componente lo maneje
     }
   }
-  getUsuarioActual() {
-    return this.auth.currentUser;
+
+  getCurrentUserId() {
+    return this.auth.currentUser?.then(user => user?.uid);
   }
 }
-

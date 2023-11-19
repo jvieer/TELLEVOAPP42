@@ -8,50 +8,72 @@
       </ion-select>
     </ion-item>
   </ion-toolbar>
-
-  <ion-card>
-    <img class="fotologin" src="../../../assets/icon/login.gif">
-    <ion-card-content [formGroup]="loginForm">
-      <ion-list>
-        <ion-item>
-          <ion-label>Email</ion-label>
-          <ion-input [(ngModel)]="emailValue" formControlName="email" type="text" placeholder="Ingresar correo" [readonly]="!isEmailEditable"></ion-input>
-          <ion-input readonly="true" [value]="getDomainForRole(selectedRole)" placeholder="dominio.com"></ion-input>
-        </ion-item>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
-          {{"Elcorreoesrequerido"|translate}}
-        </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
-          {{"Elcorreoesinvalido"|translate}}
-        </ion-text>
-
-        <ion-item>
-          <ion-label>Password</ion-label>
-          <ion-input [(ngModel)]="passValue" formControlName="password" type="password" placeholder="Ingresar contraseña"></ion-input>
-        </ion-item>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
-          {{"Lacontraseñaesrequerida"|translate}}
-        </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
-          {{"Lacontraseña"|translate}}
-        </ion-text>
-
-        <!-- Nuevo campo para seleccionar el rol -->
-        <ion-item>
-          <ion-label>{{"rol"|translate}}</ion-label>
-          <ion-select [(ngModel)]="selectedRole" formControlName="role" placeholder="Seleccionar rol" (ionChange)="updateEmail()">
-            <ion-select-option value="pasajero">{{"pasajero"|translate}}</ion-select-option>
-            <ion-select-option value="conductor">{{"conductor"|translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-
-        <ion-button color="warning" shape="round" (click)="register()" fill="outline" expand="block">
-          {{"registrarse"|translate}}
-        </ion-button>
-        <p style="color: red; text-align: center; margin-top: 10px;">
-          {{"rojo"|translate}}
-        </p>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
 </ion-header>
+<ion-card>
+  <img class="fotologin" src="../../../assets/icon/login.gif">
+  <ion-card-content [formGroup]="loginForm">
+    <ion-list>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input [(ngModel)]="emailValue" formControlName="email" type="text" placeholder="Ingresar correo" [readonly]="!isEmailEditable"></ion-input>
+        <ion-input readonly="true" [value]="getDomainForRole(selectedRole)" placeholder="dominio.com"></ion-input>
+      </ion-item>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
+        {{"Elcorreoesrequerido"|translate}}
+      </ion-text>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
+        {{"Elcorreoesinvalido"|translate}}
+      </ion-text>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input [(ngModel)]="passValue" formControlName="password" type="password" placeholder="Ingresar contraseña"></ion-input>
+      </ion-item>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
+        {{"Lacontraseñaesrequerida"|translate}}
+      </ion-text>
+      <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
+        {{"Lacontraseña"|translate}}
+      </ion-text>
+
+      <ion-item *ngIf="selectedRole === 'conductor'">
+        <ion-label>{{"nombre"|translate}}</ion-label>
+        <ion-input [(ngModel)]="nombreValue" formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="selectedRole === 'conductor'">
+        <ion-label>{{"auto"|translate}}</ion-label>
+        <ion-input [(ngModel)]="autoValue" formControlName="auto" type="text" placeholder="Auto"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="selectedRole === 'conductor'">
+        <ion-label>{{"comuna"|translate}}</ion-label>
+        <ion-input [(ngModel)]="comunaValue" formControlName="comuna" type="text" placeholder="Comuna"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="selectedRole === 'conductor'">
+        <ion-label>{{"disponible"|translate}}</ion-label>
+        <ion-select [(ngModel)]="disponibleValue" formControlName="disponible">
+          <ion-select-option value="si">Sí</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Nuevo campo para seleccionar el rol -->
+      <ion-item>
+        <ion-label>{{"rol"|translate}}</ion-label>
+        <ion-select [(ngModel)]="selectedRole" formControlName="role" placeholder="Seleccionar rol" (ionChange)="updateEmail()">
+          <ion-select-option value="pasajero">{{"pasajero"|translate}}</ion-select-option>
+          <ion-select-option value="conductor">{{"conductor"|translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button color="warning" shape="round" (click)="register()" fill="outline" expand="block">
+        {{"registrarse"|translate}}
+      </ion-button>
+      <p style="color: red; text-align: center; margin-top: 10px;">
+        {{"rojo"|translate}}
+      </p>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
