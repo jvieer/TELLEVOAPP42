@@ -37,15 +37,22 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    // Recupera el tipo de usuario almacenado
+    const userType = localStorage.getItem('userType');
 
+    if (userType) {
+      // Redirige al usuario según el tipo almacenado
+      this.router.navigate([userType]);
+    }
   }
   
   login() {
-    if(this.emailValue && this.passValue){
-      this.AuthService.login(this.emailValue,this.passValue);
- 
+    if (this.emailValue && this.passValue) {
+      this.AuthService.login(this.emailValue, this.passValue)
+        .catch(error => {
+          console.error('Error en el proceso de inicio de sesión: ', error);
+        });
     }
-  
   }
   
   register() {
@@ -125,5 +132,8 @@ export class LoginPage implements OnInit {
         console.error('Error al enviar el correo de recuperación: ', error);
       }
     }
+  }
+  logout() {
+    this.AuthService.logout();
   }
 }

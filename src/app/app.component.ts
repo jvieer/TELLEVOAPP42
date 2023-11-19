@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from './services/firebase/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,7 @@ export class AppComponent {
   ];
   
 
-  constructor(private router: Router,private menuController : MenuController,private transService : TranslateService){
+  constructor(private authService: AuthService,private router: Router,private menuController : MenuController,private transService : TranslateService){
     this.transService.setDefaultLang('es');
     this.transService.addLangs(['fr','en','ja']);
   }
@@ -47,8 +48,16 @@ export class AppComponent {
     //return this.router.url == '/apihome';
   }
  
+  redirigirSegunUsuario() {
+    // Aquí deberías obtener el usuario actual, puedes usar el servicio de autenticación
+    const user = this.authService.getCurrentUserId();
 
-
+    // Llamas a la función para redirigir según el tipo de usuario
+    this.authService.handleUserRedirect(user);
+  }
+  logout() {
+    this.authService.logout();
+  }
 }
 
   

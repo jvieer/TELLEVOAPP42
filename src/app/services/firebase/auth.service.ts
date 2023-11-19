@@ -38,13 +38,24 @@ export class AuthService {
     if (user) {
       const userEmail = user.user.email;
       if (userEmail) {
+        let userType: string | null = null;
+  
+        // Determina el tipo de usuario según el dominio del correo electrónico
         if (userEmail.endsWith('@gmail.com')) {
-          this.router.navigate(['viajes-p']);
+          userType = 'viajes-p';
         } else if (userEmail.endsWith('@conductor.com')) {
-          this.router.navigate(['viajes-c']);
+          userType = 'viajes-c';
         } else {
           console.error('Correo no compatible');
           // Puedes manejar el caso en el que el correo no es compatible
+        }
+  
+        if (userType) {
+          // Almacena el tipo de usuario en el almacenamiento local
+          localStorage.setItem('userType', userType);
+  
+          // Redirige al usuario según el tipo almacenado
+          this.router.navigate([userType]);
         }
       }
     }
@@ -59,13 +70,16 @@ export class AuthService {
     }
   }
 
-  async logout(){
-    try {
-      await this.auth.signOut(); 
-    } catch (error) {
-     console.error('error en el logout', error);
-    }
+async logout() {
+  try {
+    await this.auth.signOut();
+    // Limpia la información almacenada en el localStorage
+    localStorage.removeItem('userType');
+    this.router.navigate(['/login']);  // O la ruta que desees después del cierre de sesión
+  } catch (error) {
+    console.error('Error en el logout', error);
   }
+}
 
   checkAuth(){
     return new Promise((resolve, reject) =>{
