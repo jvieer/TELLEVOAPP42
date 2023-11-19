@@ -7,6 +7,7 @@ import 'leaflet-routing-machine';
 import 'leaflet-easybutton';
 import 'leaflet-control-geocoder';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-viajes',
@@ -15,16 +16,16 @@ import Swal from 'sweetalert2';
 })
 export class ViajesPage implements OnInit {
   listaViajes: viajes[] = [];
-
   buscador: viajes[] = [];
   map: any;
   direccionInicio: string = '';
   direccionDestino: string = '';
   routingControl: any;
-
+  openCageApiKey: string = 'b5ce420a751f401ea700aca466850f93';
   constructor(
     private router: Router,
     private viajesServices: ViajesService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -50,7 +51,7 @@ export class ViajesPage implements OnInit {
     }, 2000);
   }
 
-  buscarViaje(event: any) {
+  async buscarViaje(event: any) {
     const texto = event.target.value;
     if (texto && texto.trim() !== '') {
       this.listaViajes = this.listaViajes.filter((aux: any) => {
@@ -59,64 +60,67 @@ export class ViajesPage implements OnInit {
     }
   }
 
+  async buscarDireccion(direccion: string) {
+    const response: any = await this.http
+      .get(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(direccion)}&key=${this.openCageApiKey}`)
+      .toPromise();
+
+    if (response.results.length > 0) {
+      const result = response.results[0];
+      return {
+        lat: result.geometry.lat,
+        lon: result.geometry.lng,
+        address: result.formatted,
+      };
+    } else {
+      return null;
+    }
+  }
+
   ionViewDidEnter() {
-    // Inicializa el mapa cuando la vista se carga completamente
     this.map = L.map('map').setView([-33.59846986791216, -70.57898785152217], 13);
-  
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
-  
+
     this.routingControl = L.Routing.control({
-      waypoints: [
-        L.latLng(-33.59841678103484, -70.57914610490046), // Coordenadas de inicio
-        L.latLng(-33.60121401427903, -70.57747353188937), // Coordenadas de destino (puedes dejar esto tal como está)
-      ],
+      waypoints: [],
       routeWhileDragging: true,
     }).addTo(this.map);
-    
-     // Obtén la capa de ruta para acceder a los marcadores
 
-    // Establecer las coordenadas de destino en el input
-    this.direccionDestino = '-33.59841678103484, -70.57914610490046';
+    this.direccionDestino = ''; // Limpiar dirección destino al cargar la página
   }
 
-  generarRuta() {
-    // Verifica si los campos de inicio y fin están vacíos
+  async generarRuta() {
     if (!this.direccionInicio || !this.direccionDestino) {
-      alert('Por favor, ingresa coordenadas de inicio y final.');
+      alert('Por favor, ingresa direcciones de inicio y final.');
       return;
     }
 
-    // Parsea las coordenadas ingresadas por el usuario
-    const inicio = this.parseCoordenadas(this.direccionInicio);
-    const fin = this.parseCoordenadas(this.direccionDestino);
-    
+    const inicio = await this.buscarDireccion(this.direccionInicio);
+    const fin = await this.buscarDireccion(this.direccionDestino);
 
-    if (!inicio || !fin) {
-      alert('Las coordenadas ingresadas son inválidas. Utiliza el formato "latitud, longitud".');
-      return;
+    if (inicio && fin) {
+      const coords: L.Routing.Waypoint[] = [
+        {
+          latLng: L.latLng(inicio.lat, inicio.lon),
+        },
+        {
+          latLng: L.latLng(fin.lat, fin.lon),
+        },
+      ];
+
+      this.map.eachLayer((layer: any) => {
+        if (layer instanceof L.Marker) {
+          this.map.removeLayer(layer);
+        }
+      });
+
+      this.routingControl.setWaypoints(coords);
+    } else {
+      alert('No se pudieron obtener las coordenadas para las direcciones proporcionadas.');
     }
-
-    const coords: L.Routing.Waypoint[] = [
-      {
-        latLng: L.latLng(inicio),
-      },
-      {
-        latLng: L.latLng(fin),
-      },
-    ];
-
-    // Actualiza los marcadores
-    this.map.eachLayer((layer: any) => {
-      if (layer instanceof L.Marker) {
-        this.map.removeLayer(layer);
-      }
-    });
-
-    // Actualiza la ruta en el mapa
-    this.routingControl.setWaypoints(coords);
-   
   }
 
   parseCoordenadas(coordenadas: string): [number, number] | null {
@@ -130,7 +134,6 @@ export class ViajesPage implements OnInit {
     }
     return null;
   }
-  
 
   mensajep() {
     Swal.fire({
@@ -143,11 +146,8 @@ export class ViajesPage implements OnInit {
       heightAuto: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Si el usuario ha confirmado, navega a la página "elegirconductor".
         this.router.navigate(['elegirconductor']);
       }
     });
   }
-  
-
 }
