@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from './register.page';
 import { TranslateModule } from '@ngx-translate/core';
 
+
 @NgModule({
   imports: [
     CommonModule,

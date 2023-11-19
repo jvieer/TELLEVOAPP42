@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
 })
 export class EliminarconductorPage implements OnInit {
   conductores: any[] = [];
-  constructor(private conductoresService: ConductoresService) { }
+
+  constructor(private conductoresService: ConductoresService) {}
 
   ngOnInit() {
     this.conductoresService.getConductores().subscribe((data: any) => {
@@ -17,14 +18,22 @@ export class EliminarconductorPage implements OnInit {
     });
   }
 
-  eliminarConductor(conductorId: number) {
-    this.conductoresService.eliminarConductor(conductorId).subscribe(() => {
+  async eliminarConductor(conductorId: number) {
+    const conductorIdString = conductorId.toString(); // Convertir a string
+
+    try {
+      await this.conductoresService.eliminarConductor(conductorIdString);
       // Si la eliminación en el servidor es exitosa, elimina el elemento del array
       const index = this.conductores.findIndex((conductor) => conductor.id === conductorId);
       if (index !== -1) {
         this.conductores.splice(index, 1);
       }
-    });
+
+      this.mensajeee();
+    } catch (error) {
+      console.error('Error al eliminar conductor:', error);
+      // Manejar el error aquí, por ejemplo, mostrar un mensaje de error al usuario
+    }
   }
 
   mensajee(id: number) {
@@ -39,13 +48,11 @@ export class EliminarconductorPage implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.eliminarConductor(id);
-        this.mensajeee();
       }
     });
   }
 
-
-  mensajeee(){
+  mensajeee() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -53,17 +60,14 @@ export class EliminarconductorPage implements OnInit {
       timer: 1500,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
     Toast.fire({
       icon: 'success',
-      title: 'Conductor eliminado!'
-    })
+      title: 'Conductor eliminado!',
+    });
   }
-  
 }
-
-

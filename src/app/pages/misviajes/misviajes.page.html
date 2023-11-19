@@ -1,23 +1,28 @@
-<ion-header>
+<!-- misviajes.page.html -->
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Mis Viajes</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let viaje of misViajes; let i = index">
+  <ion-list *ngIf="misViajes.length > 0; else noViajes">
+    <ion-item *ngFor="let viaje of misViajes">
+      <ion-thumbnail slot="start">
+        <!-- Puedes agregar una imagen relacionada con el viaje aquí -->
+        <img [src]="viaje.imagenUrl" alt="Imagen del viaje">
+      </ion-thumbnail>
       <ion-label>
-        <h2>Viaje {{ i + 1 }}</h2> <!-- Muestra "Viaje" seguido de un número basado en el índice -->
-        <p>Fecha y Hora: {{ viaje.fecha }} {{ viaje.hora }}</p>
-        <!-- Asegúrate de que la propiedad "hora" contiene la hora en un formato adecuado -->
+        <h2>{{ viaje.nombre }}</h2>
+        <p>Fecha: {{ viaje.fecha }}</p>
+        <p>Hora: {{ viaje.hora }}</p>
+        <!-- Agrega otros detalles del viaje según tu modelo de datos -->
       </ion-label>
-      <ion-button (click)="mensajedelete(viaje.id)" fill="clear" color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
+      <ion-button color="danger" (click)="mensajedelete(viaje.id)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
+
+  <ng-template #noViajes>
+    <ion-text>No hay viajes disponibles.</ion-text>
+  </ng-template>
 </ion-content>

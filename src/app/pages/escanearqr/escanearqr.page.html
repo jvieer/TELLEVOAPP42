@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{"eqr"|translate}}</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <ion-button color="warning" (click)="takePicture">{{"eqr"|translate}}</ion-button>
+  </div>
+</ion-content>

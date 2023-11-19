@@ -23,6 +23,14 @@
     "Elcorreoesinvalido" : "L'e-mail n'est pas valide.",
     "Lacontraseñaesrequerida" : "Mot de passe requis.",
     "Lacontraseña" : "Le mot de passe doit comporter au moins 4 caractères.",
-    "registrarse" : "Enregistrement"
+    "registrarse" : "Enregistrement",
+    "qr" : "générer des QR",
+    "escribe" : "Écrivez votre nom ici pour générer le QR",
+    "rol": "rôle",
+    "pasajero": "passager",
+    "conductor": "conducteur",
+    "eqr" : "Scanner le QR",
+    "rojo" : "Si vous envisagez de vous inscrire, gardez à l'esprit que dans l'e-mail, vous ne devez en indiquer que la première partie, même avant le @, puisque le reste est terminé."
+
 }
 

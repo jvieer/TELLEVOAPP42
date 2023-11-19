@@ -142,6 +142,15 @@ const routes: Routes = [
     path: 'detalleusuarios',
     loadChildren: () => import('./pages/detalleusuarios/detalleusuarios.module').then( m => m.DetalleusuariosPageModule)
   },
+  {
+    path: 'generarqr',
+    loadChildren: () => import('./pages/generarqr/generarqr.module').then( m => m.GenerarqrPageModule)
+  },  {
+    path: 'escanearqr',
+    loadChildren: () => import('./pages/escanearqr/escanearqr.module').then( m => m.EscanearqrPageModule)
+  },
+
+
 
 
  

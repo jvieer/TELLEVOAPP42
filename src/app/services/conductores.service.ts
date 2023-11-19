@@ -1,37 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, from } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConductoresService {
-  private baseUrl = 'https://jsonserver-5flx.onrender.com'; // Reemplaza con la URL de tu JSON Server
+  private baseUrl = 'https://tellevoapp7.firebaseio.com';
 
-  // Agrega una variable BehaviorSubject para almacenar el conductor seleccionado
   private conductorSeleccionado = new BehaviorSubject<any | null>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
   getConductores(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/conductores`);
+    return this.firestore.collection<any>('conductores').valueChanges();
   }
 
-  // Agrega un método para establecer el conductor seleccionado
   setConductorSeleccionado(conductor: any) {
     this.conductorSeleccionado.next(conductor);
   }
 
-  // Agrega un método para obtener el conductor seleccionado
   getConductorSeleccionado(): Observable<any | null> {
     return this.conductorSeleccionado.asObservable();
   }
 
   storeConductor(conductor: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/conductores`, conductor);
+    return from(this.firestore.collection('conductores').add(conductor));
   }
 
-  eliminarConductor(conductorId: number) {
-    return this.http.delete(`${this.baseUrl}/conductores/${conductorId}`);
+  eliminarConductor(conductorId: string) {
+    return this.firestore.collection('conductores').doc(conductorId).delete();
   }
 }

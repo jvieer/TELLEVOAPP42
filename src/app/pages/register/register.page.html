@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title style="text-align: center;">Registrate</ion-title>
+    <ion-title style="text-align: center;">{{"registrarse"|translate}}</ion-title>
     <ion-item>
       <ion-label>{{"selecciona"|translate}}</ion-label>
       <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
@@ -38,16 +38,19 @@
 
         <!-- Nuevo campo para seleccionar el rol -->
         <ion-item>
-          <ion-label>Rol</ion-label>
+          <ion-label>{{"rol"|translate}}</ion-label>
           <ion-select [(ngModel)]="selectedRole" formControlName="role" placeholder="Seleccionar rol" (ionChange)="updateEmail()">
-            <ion-select-option value="pasajero">Pasajero</ion-select-option>
-            <ion-select-option value="conductor">Conductor</ion-select-option>
+            <ion-select-option value="pasajero">{{"pasajero"|translate}}</ion-select-option>
+            <ion-select-option value="conductor">{{"conductor"|translate}}</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-button color="warning" shape="round" (click)="register()" fill="outline" expand="block">
           {{"registrarse"|translate}}
         </ion-button>
+        <p style="color: red; text-align: center; margin-top: 10px;">
+          {{"rojo"|translate}}
+        </p>
       </ion-list>
     </ion-card-content>
   </ion-card>

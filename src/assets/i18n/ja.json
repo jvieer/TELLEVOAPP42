@@ -23,7 +23,16 @@
     "Elcorreoesinvalido": "メールアドレスが無効です",
     "Lacontraseñaesrequerida": "パスワードは必須です",
     "Lacontraseña": "パスワードは少なくとも4文字である必要があります",
-    "registrarse": "登録"
+    "registrarse": "登録",
+    "qr" : "QRを生成する",
+    "escribe" : "ここに名前を書いてQRを生成してください",
+    "rol": "役割",
+    "pasajero": "乗客",
+    "conductor": "運転手",
+    "eqr" : "QRをスキャン",
+    "rojo" : "登録する場合は、残りは完了しているため、メールでは、たとえ @ より前の部分だけを記載する必要があることに注意してください。."
+
+    
 
 
 

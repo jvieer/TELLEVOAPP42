@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, from } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuariosService {
-  private apiURL = 'https://jsonserver-5flx.onrender.com/usuarios'; // Reemplaza con la URL correcta de tu base de datos JSON Server
+  private baseUrl = 'https://tellevoapp7.firebaseio.com';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private firestore: AngularFirestore) {}
 
-  // Método para obtener un usuario aleatorio de la API
   getRandomuser(): Observable<any> {
     return this.httpClient.get('https://randomuser.me/api');
   }
@@ -21,27 +20,21 @@ export class UsuariosService {
   }
 
   guardarUsuario(usuario: any): Observable<any> {
-    // Asume que tienes una API en tu backend para guardar usuarios
-    // Ajusta la URL y el método HTTP (por ejemplo, POST) según tu API
-    const url = this.apiURL; // Utiliza la URL definida en la propiedad apiURL
-
-    // Realiza una solicitud HTTP POST para guardar el usuario
-    return this.httpClient.post(url, usuario);
+    return from(this.firestore.collection('usuarios').add(usuario));
   }
 
   login(email: string, password: string) {
-    return this.httpClient.get<any[]>(this.apiURL).pipe(
-      map((usuarios: any[]) => usuarios.find(user => user.email === email && user.password === password))
-    );
+    return this.firestore.collection('usuarios', (ref) =>
+      ref.where('email', '==', email).where('password', '==', password)
+    )
+    .valueChanges();
   }
 
-  eliminarUsuario(usuarioId: number) {
-    return this.httpClient.delete(`${this.apiURL}/${usuarioId}`);
+  eliminarUsuario(usuarioId: string) {
+    return this.firestore.collection('usuarios').doc(usuarioId).delete();
   }
 
   getUsuarios(): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.apiURL);
+    return this.firestore.collection<any>('usuarios').valueChanges();
   }
-
-
 }

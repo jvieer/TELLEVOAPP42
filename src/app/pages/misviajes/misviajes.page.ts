@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
-import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./misviajes.page.scss'],
 })
 export class MisviajesPage implements OnInit {
-  misViajes: any[] = []; // Inicializado como un arreglo vacío
+  misViajes: any[] = [];
 
   constructor(private viajesTomadosService: ViajesTomadosService) {}
 
@@ -18,20 +17,26 @@ export class MisviajesPage implements OnInit {
     this.loadMisViajes();
   }
 
-  loadMisViajes() {
-    this.viajesTomadosService.getViajesTomados().subscribe((data: any) => {
-      this.misViajes = data;
-    });
+  async loadMisViajes() {
+    try {
+      const data = await this.viajesTomadosService.getViajesTomados().toPromise();
+      this.misViajes = data || []; // Asigna un array vacío si data es undefined
+    } catch (error) {
+      console.error('Error al cargar los viajes tomados', error);
+    }
   }
 
-  eliminarViaje(id: number) {
-    this.viajesTomadosService.eliminarViaje(id).subscribe(() => {
+  async eliminarViaje(id: string) {
+    try {
+      await this.viajesTomadosService.eliminarViaje(id);
       // Viaje eliminado exitosamente, actualiza la lista de misViajes
-      this.loadMisViajes();
-    });
+      await this.loadMisViajes();
+    } catch (error) {
+      console.error('Error al eliminar el viaje', error);
+    }
   }
 
-  mensajedelete(id: number) {
+  mensajedelete(id: string) {
     Swal.fire({
       title: '¿Estás seguro de eliminar este viaje?',
       icon: 'question',

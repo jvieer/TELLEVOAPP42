@@ -23,7 +23,14 @@
     "Elcorreoesinvalido" : "El correo es invalido",
     "Lacontraseñaesrequerida" : "La contraseña es requerida",
     "Lacontraseña" : "La contraseña debe ser de almenos 4 caracteres",
-    "registrarse" : "Registrarse"
+    "registrarse" : "Registrarse",
+    "qr" : "generar QR",
+    "escribe" : "Escribe aqui tu nombre para generar el QR",
+    "rol" : "rol",
+    "pasajero" : "pasajero",
+    "conductor" : "conductor",
+    "eqr" : "Escanear QR",
+    "rojo" : "Si vas a registarte, ten en cuenta que en el correo solo debes indicar la primera parte de este, hasta antes del @, ya que lo demás se completa."
 
 
 

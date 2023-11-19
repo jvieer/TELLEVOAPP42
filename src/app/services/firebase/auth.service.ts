@@ -68,4 +68,8 @@ export class AuthService {
       throw error; // Puedes manejar el error aquí o dejar que el componente lo maneje
     }
   }
+  getUsuarioActual() {
+    return this.auth.currentUser;
+  }
 }
+

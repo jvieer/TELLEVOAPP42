@@ -4,11 +4,11 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-elimusuarios', // Asegúrate de que el selector coincida con tu componente
-  templateUrl: './elimusuarios.page.html', // Asegúrate de que la ruta de la plantilla sea correcta
-  styleUrls: ['./elimusuarios.page.scss'], // Asegúrate de que la ruta del archivo de estilos sea correcta
+  selector: 'app-elimusuarios',
+  templateUrl: './elimusuarios.page.html',
+  styleUrls: ['./elimusuarios.page.scss'],
 })
-export class ElimusuariosPage implements OnInit { // Asegúrate de que el nombre de la clase coincida con el nombre del componente
+export class ElimusuariosPage implements OnInit {
   usuarios: any[] = [];
 
   constructor(private usuariosService: UsuariosService) {}
@@ -20,14 +20,17 @@ export class ElimusuariosPage implements OnInit { // Asegúrate de que el nombre
   }
 
   eliminarUsuario(usuarioId: number) {
-    this.usuariosService.eliminarUsuario(usuarioId).subscribe(() => {
-      const index = this.usuarios.findIndex((usuario) => usuario.id === usuarioId);
-      if (index !== -1) {
-        this.usuarios.splice(index, 1);
-      }
-    });
+    const usuarioIdString = usuarioId.toString(); // Convierte el número a string
+    this.usuariosService.eliminarUsuario(usuarioIdString)
+      .then(() => {
+        const index = this.usuarios.findIndex((usuario) => usuario.id === usuarioId);
+        if (index !== -1) {
+          this.usuarios.splice(index, 1);
+        }
+      })
+      .catch(error => console.error('Error al eliminar usuario', error));
   }
-
+  
   mensajeEliminar(id: number) {
     Swal.fire({
       title: '¿Estás seguro de eliminar este usuario?',

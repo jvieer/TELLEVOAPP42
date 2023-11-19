@@ -14,10 +14,11 @@ export class FirestoreService {
     return this.firestore.collection<IViaje>(nombreColeccion).valueChanges();
   }
 
-  createDocument (nombreColeccion: string , data: IViaje) {
-    return this.firestore.collection<IViaje>(nombreColeccion).add(data);
+  createDocument(nombreColeccion: string , data: IViaje) {
+    return this.firestore.collection<IViaje>(nombreColeccion).add(data)
+      .then(response => console.log('Documento creado con éxito', response))
+      .catch(error => console.error('Error al crear el documento', error));
   }
-
   updateDocument (nombreColeccion: string , documentId: string, data: IViaje) {
     return this.firestore.collection<IViaje>(nombreColeccion).doc(documentId).update(data);
   }

@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{"qr"|translate}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+  <ion-label>{{"selecciona"|translate}}</ion-label>
+  <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+  <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+</ion-select>
+</ion-item>
+
+<ion-content [fullscreen]="true">
+  <ion-text color="warning">
+    <h1>{{"qr"|translate}}</h1>
+    <p>{{"escribe"|translate}}</p>
+  </ion-text>
+  <input type="text" [(ngModel)]="texto">
+  <br><br>
+  <qrcode [qrdata]="texto" [width]="300"></qrcode>
+</ion-content>

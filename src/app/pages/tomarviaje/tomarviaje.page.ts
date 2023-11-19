@@ -1,7 +1,8 @@
+// Importa Angular Router
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 
 interface Viaje {
   fecha: string;
@@ -20,19 +21,20 @@ export class TomarviajePage implements OnInit {
     hora: '',
     // Completa con otros campos de tu viaje
   };
-    router: any;
 
-  constructor(private viajesTomadosService: ViajesTomadosService) {}
+  constructor(
+    private viajesTomadosService: ViajesTomadosService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    // Inicializar la fecha y hora cuando se carga la página
     const now = new Date();
-    this.viajeData.fecha = now.toISOString().split('T')[0]; // Obtener la fecha actual (YYYY-MM-DD)
-    this.viajeData.hora = now.toTimeString().split(' ')[0];  // Obtener la hora actual (HH:MM:SS)
+    this.viajeData.fecha = now.toISOString().split('T')[0];
+    this.viajeData.hora = now.toTimeString().split(' ')[0];
   }
 
   registerViajeTomado() {
-    console.log(this.viajeData); // Agrega este log para verificar el contenido de viajeData
+    console.log(this.viajeData);
     if (this.viajeData.fecha.trim() !== '' && this.viajeData.hora.trim() !== '') {
       this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(
         (response) => {
@@ -47,8 +49,6 @@ export class TomarviajePage implements OnInit {
       console.error('Campos incompletos. Por favor, completa todos los campos antes de tomar el viaje.');
     }
   }
-
-
 
   mensajer() {
     const Toast = Swal.mixin({
@@ -67,9 +67,7 @@ export class TomarviajePage implements OnInit {
       icon: 'success',
       title: '¡Viaje tomado!'
     }).then(() => {
-      // Redirigir al usuario a la página de inicio (home)
       this.router.navigate(['/viajes-p']);
     });
   }
-  
 }

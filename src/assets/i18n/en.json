@@ -23,5 +23,12 @@
     "Elcorreoesinvalido" : "The email is invalid.",
     "Lacontraseñaesrequerida" : "Password is required.",
     "Lacontraseña" : "The password must be at least 4 characters.",
-    "registrarse" : "Check in"
+    "registrarse" : "Check in",
+    "qr" : "generate QR",
+    "escribe" : "Write your name here to generate the QR",
+    "rol": "role",
+    "pasajero": "passenger",
+    "conductor": "driver",
+    "eqr" : "Scan QR",
+    "rojo" : "If you are going to register, keep in mind that in the email you should only indicate the first part of it, even before the @, since the rest is completed."
 }

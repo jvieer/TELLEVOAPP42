@@ -8,6 +8,7 @@ import 'leaflet-easybutton';
 import 'leaflet-control-geocoder';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-viajes',
@@ -22,22 +23,31 @@ export class ViajesPage implements OnInit {
   direccionDestino: string = '';
   routingControl: any;
   openCageApiKey: string = 'b5ce420a751f401ea700aca466850f93';
+
+  private subscription: Subscription | undefined;
+
   constructor(
     private router: Router,
-    private viajesServices: ViajesService,
+    private viajesService: ViajesService,
     private http: HttpClient
   ) {}
 
   ngOnInit() {
-    this.listaViajes = this.viajesServices.getAll();
+    this.subscription = this.viajesService.getViajes().subscribe((viajes) => {
+      this.listaViajes = viajes;
+    });
   }
 
   ionViewWillEnter() {
-    this.listaViajes = this.viajesServices.getAll();
+    this.subscription = this.viajesService.getViajes().subscribe((viajes) => {
+      this.listaViajes = viajes;
+    });
   }
 
   listar() {
-    this.listaViajes = this.viajesServices.getAll();
+    this.subscription = this.viajesService.getViajes().subscribe((viajes) => {
+      this.listaViajes = viajes;
+    });
   }
 
   addViaje() {
@@ -150,5 +160,11 @@ export class ViajesPage implements OnInit {
       }
     });
   }
-  
+
+  ngOnDestroy() {
+    // Asegúrate de desuscribirte para evitar posibles problemas de memoria
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }
