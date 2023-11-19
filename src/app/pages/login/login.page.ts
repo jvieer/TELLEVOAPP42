@@ -71,4 +71,18 @@ export class LoginPage implements OnInit {
   changeLangs(event: any){
     this.transService.use(event.detail.value);
   }
+  async recoverPassword() {
+    const email = this.loginForm.get('email')?.value;
+
+    if (email) {
+      try {
+        await this.AuthService.recoverPassword(email);
+        // Mostrar un mensaje de éxito o redirigir a una página de confirmación
+        console.log('Correo de recuperación enviado con éxito');
+      } catch (error) {
+        // Manejar el error, mostrar un mensaje de error, etc.
+        console.error('Error al enviar el correo de recuperación: ', error);
+      }
+    }
+  }
 }

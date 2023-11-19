@@ -60,4 +60,12 @@ export class AuthService {
       })
     })
   }
+  
+  async recoverPassword(email: string) {
+    try {
+      await this.auth.sendPasswordResetEmail(email);
+    } catch (error) {
+      throw error; // Puedes manejar el error aquí o dejar que el componente lo maneje
+    }
+  }
 }

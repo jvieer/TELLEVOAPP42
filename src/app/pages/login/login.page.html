@@ -41,7 +41,14 @@
         <ion-button  [disabled]="!loginForm.valid" color="warning" shape="round" (click)="login()" fill="outline" expand="block"  >{{"ingresar"|translate}}</ion-button>
         <ion-button   color="warning" shape="round" (click)="register()" fill="outline" expand="block"  >{{"registrarse"|translate}}</ion-button>
         
-
+        <form [formGroup]="loginForm">
+          <!-- Campos de correo electrónico y contraseña -->
+      
+          <!-- Nuevo botón de recuperar contraseña -->
+          <ion-button expand="full" (click)="recoverPassword()">
+            Recuperar Contraseña
+          </ion-button>
+        </form>
       </ion-list>
   
     </ion-card-content>
