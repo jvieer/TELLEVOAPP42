@@ -7,7 +7,10 @@ import Swal from 'sweetalert2';
 interface Viaje {
   fecha: string;
   hora: string;
-  // Agrega otros campos de tu viaje
+  rutaInicio: string;  // Agrega la propiedad de rutaInicio
+  rutaDestino: string; // Agrega la propiedad de rutaDestino
+  conductor: string;   // Agrega la propiedad de conductor
+  // Agrega otros campos de tu viaje si es necesario
 }
 
 @Component({
@@ -19,8 +22,17 @@ export class TomarviajePage implements OnInit {
   viajeData: Viaje = {
     fecha: '',
     hora: '',
-    // Completa con otros campos de tu viaje
+    rutaInicio: '',    // Inicializa la propiedad de rutaInicio
+    rutaDestino: '',   // Inicializa la propiedad de rutaDestino
+    conductor: '',     // Inicializa la propiedad de conductor
+    // Inicializa otros campos de tu viaje si es necesario
   };
+
+  conductoresDisponibles: any[] = [
+    { id: '1', nombre: 'Conductor 1' },
+    { id: '2', nombre: 'Conductor 2' },
+    // Agrega más conductores según sea necesario
+  ];
 
   constructor(
     private viajesTomadosService: ViajesTomadosService,
@@ -35,7 +47,13 @@ export class TomarviajePage implements OnInit {
 
   registerViajeTomado() {
     console.log(this.viajeData);
-    if (this.viajeData.fecha.trim() !== '' && this.viajeData.hora.trim() !== '') {
+    if (
+      this.viajeData.fecha.trim() !== '' &&
+      this.viajeData.hora.trim() !== '' &&
+      this.viajeData.rutaInicio.trim() !== '' &&  // Verifica la rutaInicio
+      this.viajeData.rutaDestino.trim() !== '' && // Verifica la rutaDestino
+      this.viajeData.conductor.trim() !== ''      // Verifica el conductor
+    ) {
       this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(
         (response) => {
           console.log('Viaje tomado con éxito', response);

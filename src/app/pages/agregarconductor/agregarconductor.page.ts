@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-agregarconductor',
@@ -17,25 +19,51 @@ export class AgregarconductorPage {
 
   nuevoUsuario = {
     nombre: '',
-    email: '',
+    email: '', // No incluir el dominio aquí
     contrasena: '',
     rol: 'conductor',
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private auth: AngularFireAuth,
+    private http: HttpClient,
+  ) {}
 
   agregarConductor() {
-    // Agregar conductor
-    this.http.post('https://jsonserver-5flx.onrender.com/conductores', this.nuevoConductor).subscribe((response: any) => {
-      console.log('Conductor agregado con éxito', response);
-      this.mensajea();
-    });
+    // Construir el correo electrónico completo con el dominio '@conductor.com'
+    const correoConductor = `${this.nuevoUsuario.email}@conductor.com`;
 
-    // Agregar usuario con "@conductor.com" agregado automáticamente
-    this.nuevoUsuario.email = this.nuevoUsuario.email + '@conductor.com';
-    this.http.post('https://jsonserver-5flx.onrender.com/usuarios', this.nuevoUsuario).subscribe((response: any) => {
-      console.log('Usuario agregado con éxito', response);
-    });
+    // Agregar conductor a la colección 'conductores' en Firebase Database
+    this.firestore.collection('conductores').add(this.nuevoConductor)
+      .then((conductorResponse) => {
+        console.log('Conductor agregado con éxito a Firebase Database', conductorResponse);
+
+        // Agregar usuario a la autenticación de Firebase
+        this.auth.createUserWithEmailAndPassword(correoConductor, this.nuevoUsuario.contrasena)
+          .then((authResponse) => {
+            console.log('Usuario agregado con éxito a la autenticación de Firebase', authResponse);
+
+            // Actualizar el objeto nuevoUsuario con el correo completo
+            this.nuevoUsuario.email = correoConductor;
+
+            // Agregar usuario a la colección 'usuarios' en Firebase Database
+            this.firestore.collection('usuarios').add(this.nuevoUsuario)
+              .then((usuarioResponse) => {
+                console.log('Usuario agregado con éxito a Firebase Database', usuarioResponse);
+                this.mensajea();
+              })
+              .catch((usuarioError) => {
+                console.error('Error al agregar usuario a Firebase Database', usuarioError);
+              });
+          })
+          .catch((authError) => {
+            console.error('Error al agregar usuario a la autenticación de Firebase', authError);
+          });
+      })
+      .catch((conductorError) => {
+        console.error('Error al agregar conductor a Firebase Database', conductorError);
+      });
   }
 
   mensajea() {
