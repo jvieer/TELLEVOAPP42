@@ -58,6 +58,16 @@ export class AppComponent {
   logout() {
     this.authService.logout();
   }
-}
+  goToUserTypePage() {
+    // Obtiene el tipo de usuario almacenado en el localStorage
+    const userType = localStorage.getItem('userType');
 
-  
+    // Redirige al usuario según el tipo almacenado
+    if (userType) {
+      this.router.navigate([userType]);
+    } else {
+      console.error('Tipo de usuario no almacenado en el localStorage');
+      // Puedes manejar el caso en el que el tipo de usuario no está almacenado
+    }
+}
+}
