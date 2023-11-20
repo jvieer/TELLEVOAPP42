@@ -30,6 +30,7 @@
     "@ionic/cli": "^7.1.5",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@zxing/library": "^0.20.0",
     "angularx-qrcode": "^16.0.2",
     "bingmaps": "^2.0.3",
     "firebase": "^10.5.2",
