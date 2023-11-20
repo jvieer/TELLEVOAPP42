@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
-import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-createviaje',
@@ -11,7 +12,7 @@ export class CreateViajePage implements OnInit {
   viajes: any[] = [];
   viajeSeleccionado: number | null = null; // Inicializado como null
 
-  constructor(private viajesService: ViajesTomadosService) {}
+  constructor(private viajesService: ViajesTomadosService, private router: Router) {}
 
   ngOnInit() {
     this.loadViajes();
@@ -27,11 +28,23 @@ export class CreateViajePage implements OnInit {
     if (this.viajeSeleccionado !== null) {
       // Implementa la lógica para "tomar" el viaje seleccionado
       console.log(`Viaje seleccionado: ${this.viajeSeleccionado}`);
-    
+
+      // Realiza acciones adicionales según el viaje seleccionado
+      // ...
+
+      this.viajeSeleccionado = null; // Reinicia la selección después de tomar el viaje
+    } else {
+      console.log('Selecciona un viaje antes de tomarlo');
+    }
+  }
+
+  selectViaje(event: any, viajeId: number) {
+    if (this.viajeSeleccionado === viajeId) {
+      // Desmarca la opción si ya está seleccionada
       this.viajeSeleccionado = null;
     } else {
-      // Muestra un mensaje de error o notificación si no se seleccionó ningún viaje.
-      console.log('Selecciona un viaje antes de tomarlo');
+      // Marca la opción seleccionada
+      this.viajeSeleccionado = viajeId;
     }
   }
 
@@ -47,14 +60,14 @@ export class CreateViajePage implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.tomarViaje();
-        window.location.href = 'viajes-c';
+        // Redirige al usuario a la página "generarqr" después de tomar el viaje
+        this.router.navigate(['generarqr']);
         this.mensaje();
-
       }
     });
   }
 
-  mensaje(){
+  mensaje() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -62,20 +75,14 @@ export class CreateViajePage implements OnInit {
       timer: 1500,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
     Toast.fire({
       icon: 'success',
-      title: 'Viaje tomado!'
-    })
+      title: 'Viaje tomado!',
+    });
   }
 }
-
-
-
-
-
-

@@ -8,17 +8,14 @@
 
 <ion-content>
   <ion-list>
-    <ion-radio-group [(ngModel)]="viajeSeleccionado">
-      <ion-item *ngFor="let viaje of viajes; let i = index">
-        <ion-label>
-          <!-- Muestra el título con el número de viaje -->
-          <h2>Viaje {{ i + 1 }}</h2>
-          <p>Fecha: {{ viaje.fecha }}</p>
-          <p>Hora: {{ viaje.hora }}</p>
-        </ion-label>
-        <ion-radio slot="start" [value]="viaje.id"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
+    <ion-item *ngFor="let viaje of viajes; let i = index">
+      <ion-label>
+        <h2>Viaje {{ i + 1 }}</h2>
+        <p>Fecha: {{ viaje.fecha }}</p>
+        <p>Hora: {{ viaje.hora }}</p>
+      </ion-label>
+      <ion-radio slot="start" [value]="viaje.id" (ionSelect)="selectViaje($event, viaje.id)"></ion-radio>
+    </ion-item>
   </ion-list>
 
   <ion-button class="centrado2" color="warning" expand="full" (click)="mensajec()">Tomar Viaje</ion-button>
