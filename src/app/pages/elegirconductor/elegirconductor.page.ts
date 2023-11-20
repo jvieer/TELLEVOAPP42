@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConductoresService } from 'src/app/services/conductores.service';
 import Swal from 'sweetalert2';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-elegirconductor',
   templateUrl: './elegirconductor.page.html',
@@ -11,11 +11,16 @@ import Swal from 'sweetalert2';
 })
 export class ElegirconductorPage implements OnInit {
   conductores: any[] = [];
+  langs: string[] = [];
+  idioma!: string;
 
   constructor(
     private conductoresService: ConductoresService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private transService: TranslateService
+  ) {
+    this.langs = this.transService.getLangs();
+  }
 
   ngOnInit() {
     this.conductoresService.getConductores().subscribe((data: any[]) => {
@@ -63,5 +68,9 @@ export class ElegirconductorPage implements OnInit {
     setTimeout(() => {
       Swal.close();
     }, 1500);
+  }
+
+  changeLangs(event: any){
+    this.transService.use(event.detail.value);
   }
 }

@@ -31,7 +31,22 @@
     "conductor": "conducteur",
     "eqr" : "Scanner le QR",
     "rojo" : "Si vous envisagez de vous inscrire, gardez à l'esprit que dans l'e-mail, vous ne devez en indiquer que la première partie, même avant le @, puisque le reste est terminé.",
-    "crea" : "CRÉEZ VOTRE VOYAGE"
+    "crea" : "CRÉEZ VOTRE VOYAGE",
+    "direccióndeinicio" : "Adresse de départ",
+    "destino": "Adresse de destination (DUOC UC)",
+    "Generar Ruta":"Générer un itinéraire",
+    "Aceptar": "Accepter",
+    "busca": "CHERCHEZ VOTRE DESTINATION!!",
+    "detalle": "détail",
+    "Comuna": "Commune",
+    "Fecha": "Date",
+    "Hora": "Heure",
+    "Disponible": "Disponible",
+    "viajar": "voyager",
+    "elegir": "Choisir un conducteur",
+    "nombre": "Nom",
+    "auto": "Auto"
+
 
 }
 

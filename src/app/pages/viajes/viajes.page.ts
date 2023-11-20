@@ -9,6 +9,7 @@ import 'leaflet-control-geocoder';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-viajes',
@@ -23,14 +24,20 @@ export class ViajesPage implements OnInit {
   direccionDestino: string = '';
   routingControl: any;
   openCageApiKey: string = 'b5ce420a751f401ea700aca466850f93';
+  langs: string[] = [];
+  idioma!: string;
 
   private subscription: Subscription | undefined;
 
   constructor(
     private router: Router,
     private viajesService: ViajesService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private transService: TranslateService
+  ) {
+    this.langs = this.transService.getLangs();
+
+  }
 
   ngOnInit() {
     this.subscription = this.viajesService.getViajes().subscribe((viajes) => {
@@ -166,5 +173,10 @@ export class ViajesPage implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+
+  changeLangs(event: any){
+    this.transService.use(event.detail.value);
   }
 }

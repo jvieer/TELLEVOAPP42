@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tomar Viaje
+      {{"viajar"|translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-item>
+  <ion-label>{{"selecciona"|translate}}</ion-label>
+  <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+  <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+</ion-select>
+</ion-item>
 <ion-content>
   <ion-card>
     <ion-card-content>
@@ -13,18 +18,18 @@
 
 
         <ion-item>
-          <ion-label position="stacked">Fecha</ion-label>
+          <ion-label position="stacked">{{"Fecha"|translate}}</ion-label>
           <ion-input readonly="true" type="date" [(ngModel)]="viajeData.fecha" name="fecha" required></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Hora</ion-label>
+          <ion-label position="stacked">{{"Hora"|translate}}</ion-label>
           <ion-input readonly="true" type="time" [(ngModel)]="viajeData.hora" name="hora" required></ion-input>
         </ion-item>
 
         <!-- Puedes agregar más campos según tus necesidades -->
 
-        <ion-button [routerLink]="['/viajes-p']"color="warning" expand="full" type="submit">Aceptar</ion-button>
+        <ion-button [routerLink]="['/viajes-p']"color="warning" expand="full" type="submit">{{"Aceptar"|translate}}</ion-button>
         
       </form>
     </ion-card-content>

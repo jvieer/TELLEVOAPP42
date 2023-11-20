@@ -6,24 +6,30 @@
     <ion-buttons slot="start">
       <ion-back-button defaulutHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title style="text-align: center;">Busca destino</ion-title>
+    <ion-title style="text-align: center;">{{"busca"|translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-item>
+  <ion-label>{{"selecciona"|translate}}</ion-label>
+  <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+  <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+</ion-select>
+</ion-item>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <div id="map" style="height: 400px;"></div>
 
   
   <ion-list>
     <ion-item>
-      <ion-label position="stacked">Dirección de inicio</ion-label>
+      <ion-label position="stacked">{{"direccióndeinicio"|translate}}</ion-label>
       <ion-input [(ngModel)]="direccionInicio"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Dirección de destino (DUOC UC) </ion-label>
+      <ion-label position="stacked">{{"destino"|translate}} </ion-label>
       <ion-input [(ngModel)]="direccionDestino" ></ion-input>
     </ion-item>
 
-  <ion-button style="width: 150px;" (click)="generarRuta()">Generar Ruta</ion-button><ion-button color="success" style="width: 150px;"(click)="mensajep()" (click)="generarRuta()">Aceptar</ion-button>
+  <ion-button style="width: 150px;" (click)="generarRuta()">{{"ruta"|translate}}</ion-button><ion-button color="success" style="width: 150px;"(click)="mensajep()" (click)="generarRuta()">{{"Aceptar"|translate}}</ion-button>
 
 

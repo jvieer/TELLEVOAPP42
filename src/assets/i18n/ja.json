@@ -31,7 +31,21 @@
     "conductor": "運転手",
     "eqr" : "QRをスキャン",
     "rojo" : "登録する場合は、残りは完了しているため、メールでは、たとえ @ より前の部分だけを記載する必要があることに注意してください。.",
-    "crea" : "旅行を作成する"
+    "crea" : "旅行を作成する",
+    "direccióndeinicio" : "出発地の住所",
+    "destino": "目的地の住所（DUOC UC）",
+    "Generar Ruta":"経路を生成する",
+    "Aceptar": "受け入れる",
+    "busca": "目的地を検索!!",
+    "detalle": "詳細",
+    "Comuna": "コムナ",
+    "Fecha": "日付",
+    "Hora": "時間",
+    "Disponible": "利用可能",
+    "viajar": "旅行",
+    "elegir": "ドライバーを選ぶ",
+    "nombre": "名前",
+    "auto": "車"
 
     
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Viaje {
   fecha: string;
@@ -27,6 +28,8 @@ export class TomarviajePage implements OnInit {
     conductor: '',     // Inicializa la propiedad de conductor
     // Inicializa otros campos de tu viaje si es necesario
   };
+  langs: string[] = [];
+  idioma!: string;
 
   conductoresDisponibles: any[] = [
     { id: '1', nombre: 'Conductor 1' },
@@ -36,8 +39,11 @@ export class TomarviajePage implements OnInit {
 
   constructor(
     private viajesTomadosService: ViajesTomadosService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private transService: TranslateService
+  ) {
+    this.langs = this.transService.getLangs();
+  }
 
   ngOnInit() {
     const now = new Date();
@@ -87,5 +93,9 @@ export class TomarviajePage implements OnInit {
     }).then(() => {
       this.router.navigate(['/viajes-p']);
     });
+  }
+
+  changeLangs(event: any){
+    this.transService.use(event.detail.value);
   }
 }

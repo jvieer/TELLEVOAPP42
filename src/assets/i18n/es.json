@@ -29,9 +29,25 @@
     "rol" : "rol",
     "pasajero" : "pasajero",
     "conductor" : "conductor",
-    "eqr" : "Escanear QR ()",
+    "eqr" : "Escanear QR",
     "rojo" : "Si vas a registarte, ten en cuenta que en el correo solo debes indicar la primera parte de este, hasta antes del @, ya que lo demás se completa.",
-    "crea" : "CREA TU VIAJE"
+    "crea" : "CREA TU VIAJE",
+    "direccióndeinicio" : "Dirección de inicio",
+    "destino": "Dirección de destino (DUOC UC)",
+    "ruta":"Generar Ruta",
+    "Aceptar": "Aceptar",
+    "busca": "BUSCA TU DESTINO!!",
+    "detalle" : "detalle",
+    "Comuna": "Comuna",
+    "Fecha": "Fecha",
+    "Hora": "Hora",
+    "Disponible": "Disponible",
+    "viajar" : "viajar",
+    "elegir" : "Elegir conductor",
+    "nombre" : "Nombre",
+    "auto" : "Auto"
+    
+
 
 
 

@@ -8,12 +8,15 @@ import { TomarviajePageRoutingModule } from './tomarviaje-routing.module';
 
 import { TomarviajePage } from './tomarviaje.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TomarviajePageRoutingModule
+    TomarviajePageRoutingModule,
+    TranslateModule
   ],
   declarations: [TomarviajePage]
 })

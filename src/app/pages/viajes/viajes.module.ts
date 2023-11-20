@@ -8,12 +8,16 @@ import { ViajesPageRoutingModule } from './viajes-routing.module';
 
 import { ViajesPage } from './viajes.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViajesPageRoutingModule
+    ViajesPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ViajesPage]
 })

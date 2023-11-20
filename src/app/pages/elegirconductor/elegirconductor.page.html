@@ -4,18 +4,23 @@
     <ion-buttons slot="start">
       <ion-back-button defaulutHref="/viajes"></ion-back-button>
     </ion-buttons>
-    <ion-title>Elegir Conductor</ion-title>
+    <ion-title>{{"elegir"|translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-item>
+  <ion-label>{{"selecciona"|translate}}</ion-label>
+  <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+  <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+</ion-select>
+</ion-item>
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let conductor of conductores" (click)="verDetalleConductor(conductor)">
       <ion-label>
-        <h2>Nombre: {{ conductor.nombre }}</h2>
-        <p>Auto: {{ conductor.auto }}</p>
-        <p>Comuna: {{ conductor.comuna }}</p>
-        <p>Disponible: {{ conductor.disponible }}</p>
+        <h2>{{"nombre"|translate}} {{ conductor.nombre }}</h2>
+        <p>{{"auto"|translate}} {{ conductor.auto }}</p>
+        <p>{{"Comuna"|translate}} {{ conductor.comuna }}</p>
+        <p>{{"Disponible"|translate}} {{ conductor.disponible }}</p>
       </ion-label>
       <ion-button (click)="mensajet()" fill="outline" shape="round" slot="end" class="ion-color-warning" color="warning"
                  *ngIf="conductor.disponible === 'si'" [disabled]="conductor.disponible === 'no'">

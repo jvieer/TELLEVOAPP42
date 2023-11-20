@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ElegirconductorPageRoutingModule } from './elegirconductor-routing.module';
 
 import { ElegirconductorPage } from './elegirconductor.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ElegirconductorPageRoutingModule
+    ElegirconductorPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ElegirconductorPage]
 })
