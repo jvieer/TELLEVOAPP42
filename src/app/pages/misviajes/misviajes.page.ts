@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './misviajes.page.html',
   styleUrls: ['./misviajes.page.scss'],
 })
+
 export class MisviajesPage implements OnInit {
   misViajes: any[] = [];
 

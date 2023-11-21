@@ -13,8 +13,9 @@
   <ion-list>
     <ion-item *ngFor="let viaje of misViajes; let i = index">
       <!-- Muestra el nombre del viaje con un índice -->
-      <ion-label>{{ 'Viaje ' + (i + 1) + ': ' + viaje.nombre }}</ion-label>
-      <ion-label>{{ viaje.fecha }}</ion-label>
+      <ion-label>{{ 'Viaje ' + (i + 1) + ': ' }} {{ viaje.fecha | date:'dd/MM/yyyy' }} - {{ viaje.hora }}</ion-label>
+
+      
       <!-- Agrega más campos según la estructura de tus documentos de viaje -->
       
       <!-- Botón para eliminar el viaje -->
