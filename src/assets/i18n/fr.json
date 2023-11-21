@@ -45,8 +45,11 @@
     "viajar": "voyager",
     "elegir": "Choisir un conducteur",
     "nombre": "Nom",
-    "auto": "Auto"
-
+    "auto": "Auto",
+    "conductor" : "conducteur",
+    "iniciarescaneo" : "Démarrer l'analyse",
+    "detenerescaneo" : "Arrêter l'analyse"
+    
 
 }
 

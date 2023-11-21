@@ -45,8 +45,10 @@
     "viajar" : "viajar",
     "elegir" : "Elegir conductor",
     "nombre" : "Nombre",
-    "auto" : "Auto"
-    
+    "auto" : "Auto",
+    "conductor" : "Conductor",
+    "iniciarescaneo" : "Iniciar Escaneo",
+    "detenerescaneo" : "Detener Escaneo"
 
 
 

@@ -45,7 +45,10 @@
     "viajar": "旅行",
     "elegir": "ドライバーを選ぶ",
     "nombre": "名前",
-    "auto": "車"
+    "auto": "車",
+    "conductor": "運転者",
+    "iniciarescaneo" : "スキャン開始",
+    "detenerescaneo" : "スキャンの停止"
 
     
 

@@ -45,6 +45,9 @@
     "viajar": "travel",
     "elegir": "Choose Driver",
     "nombre": "Name",
-    "auto": "Car"
+    "auto": "Car",
+    "conductor" : "Driver",
+    "iniciarescaneo" : "Start Scan",
+    "detenerescaneo" : "Stop Scan"
 
 }

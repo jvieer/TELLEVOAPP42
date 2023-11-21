@@ -1,28 +1,34 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Escanear QR
+      {{ "eqr" | translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-label>{{"selecciona"|translate}}</ion-label>
+    <ion-select [(ngModel)]="idioma" (ionChange)="changeLangs($event)">
+    <ion-select-option *ngFor="let lang of langs" >{{lang}}</ion-select-option>
+  </ion-select>
+  </ion-item>
   <!-- Agrega un botón para iniciar el escaneo -->
   <video *ngIf="scanActive" #video id="video" width="100%" height="auto" autoplay playsinline></video>
 
   <!-- Botón para detener el escaneo -->
   <ion-button expand="full" (click)="stopScan()" *ngIf="scanActive">
-    Detener Escaneo
+    {{"detenerescaneo"|translate}}
   </ion-button>
 
   <!-- Agregar un botón para reiniciar el escaneo -->
   <ion-button expand="full" (click)="startScan()" *ngIf="!scanActive">
-    Iniciar Escaneo
+    {{"iniciarescaneo"|translate}}
   </ion-button>
 
   <!-- Muestra el resultado del escaneo -->
   <ion-item *ngIf="scanResult">
-    <ion-label>Conductor:</ion-label>
+    <ion-label>{{"conductor"|translate}}:</ion-label>
     <ion-text>{{ scanResult }}</ion-text>
   </ion-item>
 
@@ -30,5 +36,5 @@
   <video #video id="video" width="100%" height="auto" autoplay playsinline></video>
 
   <!-- Agrega el elemento de lienzo para dibujar el contenido de la cámara -->
-  <canvas #canvas id="canvas" width="100%" height="auto"></canvas>
+  <canvas #canvas id="canvas" width="25%" height="auto"></canvas>
 </ion-content>
