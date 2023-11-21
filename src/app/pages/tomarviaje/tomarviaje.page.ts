@@ -55,10 +55,7 @@ export class TomarviajePage implements OnInit {
     console.log(this.viajeData);
     if (
       this.viajeData.fecha.trim() !== '' &&
-      this.viajeData.hora.trim() !== '' &&
-      this.viajeData.rutaInicio.trim() !== '' &&  // Verifica la rutaInicio
-      this.viajeData.rutaDestino.trim() !== '' && // Verifica la rutaDestino
-      this.viajeData.conductor.trim() !== ''      // Verifica el conductor
+      this.viajeData.hora.trim() !== ''
     ) {
       this.viajesTomadosService.createViajeTomado(this.viajeData).subscribe(
         (response) => {
