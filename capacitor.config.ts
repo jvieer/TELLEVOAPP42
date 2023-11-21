@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'cl.duoc.tellevoapp',
-  appName: 'tellevoapp65',
+  appName: 'tellevoapp898',
   webDir: 'www',
   server: {
     androidScheme: 'https'
