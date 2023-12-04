@@ -9,9 +9,8 @@ import { AuthService } from 'src/app/services/firebase/auth.service';
 interface Viaje {
   fecha: string;
   hora: string;
-  rutaInicio: string;  // Agrega la propiedad de rutaInicio
-  rutaDestino: string; // Agrega la propiedad de rutaDestino
-  conductor: string;   // Agrega la propiedad de conductor
+  status: string;
+
   // Agrega otros campos de tu viaje si es necesario
 }
 
@@ -24,9 +23,7 @@ export class TomarviajePage implements OnInit {
   viajeData: Viaje = {
     fecha: '',
     hora: '',
-    rutaInicio: '',    // Inicializa la propiedad de rutaInicio
-    rutaDestino: '',   // Inicializa la propiedad de rutaDestino
-    conductor: '',     // Inicializa la propiedad de conductor
+    status: 'pendiente',
     // Inicializa otros campos de tu viaje si es necesario
   };
   langs: string[] = [];

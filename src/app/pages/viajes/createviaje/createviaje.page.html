@@ -3,10 +3,17 @@
     <ion-title>
       Lista de Viajes
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
     <ion-item *ngFor="let viaje of viajes; let i = index">
       <ion-label>
@@ -14,9 +21,9 @@
         <p>Fecha: {{ viaje.fecha }}</p>
         <p>Hora: {{ viaje.hora }}</p>
       </ion-label>
-      <ion-radio slot="start" [value]="viaje.id" (ionSelect)="selectViaje($event, viaje.id)"></ion-radio>
+      <ion-checkbox slot="start" [(ngModel)]="viaje.selected"></ion-checkbox>
     </ion-item>
   </ion-list>
 
-  <ion-button class="centrado2" color="warning" expand="full" (click)="mensajec()">Tomar Viaje</ion-button>
+  <ion-button class="centrado2" color="warning" expand="full" (click)="tomarViajes()">Tomar Viaje</ion-button>
 </ion-content>

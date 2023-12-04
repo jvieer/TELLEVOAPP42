@@ -29,4 +29,9 @@ export class ViajesTomadosService {
   getViajesTomadosByUserId(userId: string): Observable<any[]> {
     return this.firestore.collection<any>('viajes', ref => ref.where('userId', '==', userId)).valueChanges();
   }
+
+  actualizarStatusViaje(viajeId: string, status: string): Observable<any> {
+    return from(this.firestore.collection('viajes').doc(viajeId).update({ status }));
+  }
+  
 }

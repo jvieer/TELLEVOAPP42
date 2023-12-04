@@ -137,7 +137,6 @@ export class LoginPage implements OnInit {
   logout() {
     this.AuthService.logout();
   }
-
   doRefresh(event: CustomEvent) {
     // Muestra un mensaje o indicador de recarga
     this.carga();

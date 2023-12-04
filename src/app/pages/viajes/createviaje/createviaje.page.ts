@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 })
 export class CreateViajePage implements OnInit {
   viajes: any[] = [];
-  viajeSeleccionado: number | null = null; // Inicializado como null
 
   constructor(private viajesService: ViajesTomadosService, private router: Router) {}
 
@@ -20,53 +19,35 @@ export class CreateViajePage implements OnInit {
 
   loadViajes() {
     this.viajesService.getViajesTomados().subscribe((data) => {
-      this.viajes = data;
+      console.log('Viajes cargados:', data);
+      this.viajes = data.sort((a, b) => {
+        const fechaHoraA = new Date(`${a.fecha} ${a.hora}`);
+        const fechaHoraB = new Date(`${b.fecha} ${b.hora}`);
+        return fechaHoraA.getTime() - fechaHoraB.getTime();
+      });
     });
   }
 
-  tomarViaje() {
-    if (this.viajeSeleccionado !== null) {
-      // Implementa la lógica para "tomar" el viaje seleccionado
-      console.log(`Viaje seleccionado: ${this.viajeSeleccionado}`);
-
-      // Realiza acciones adicionales según el viaje seleccionado
+  tomarViajes() {
+    const viajesSeleccionados = this.viajes.filter(viaje => viaje.selected);
+  
+    if (viajesSeleccionados.length > 0) {
+      console.log('Viajes seleccionados:', viajesSeleccionados);
+      console.log('IDs de los viajes seleccionados:', viajesSeleccionados.map(viaje => viaje.id));
+  
+      // Realiza acciones adicionales según los viajes seleccionados
       // ...
-
-      this.viajeSeleccionado = null; // Reinicia la selección después de tomar el viaje
+  
+      // Reinicia la selección después de tomar los viajes
+      this.viajes.forEach(viaje => (viaje.selected = false));
+  
+      // Puedes redirigir a la página de generar QR aquí
+      this.router.navigate(['generarqr']);
+      this.mensaje();
     } else {
-      console.log('Selecciona un viaje antes de tomarlo');
+      console.log('Selecciona al menos un viaje antes de tomarlos');
     }
   }
-
-  selectViaje(event: any, viajeId: number) {
-    if (this.viajeSeleccionado === viajeId) {
-      // Desmarca la opción si ya está seleccionada
-      this.viajeSeleccionado = null;
-    } else {
-      // Marca la opción seleccionada
-      this.viajeSeleccionado = viajeId;
-    }
-  }
-
-  mensajec() {
-    Swal.fire({
-      title: '¿Estás seguro de tomar este viaje?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, tomar',
-      heightAuto: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.tomarViaje();
-        // Redirige al usuario a la página "generarqr" después de tomar el viaje
-        this.router.navigate(['generarqr']);
-        this.mensaje();
-      }
-    });
-  }
-
   mensaje() {
     const Toast = Swal.mixin({
       toast: true,
@@ -79,10 +60,32 @@ export class CreateViajePage implements OnInit {
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       },
     });
+  }
 
-    Toast.fire({
-      icon: 'success',
-      title: 'Viaje tomado!',
+  doRefresh(event: CustomEvent) {
+    this.carga();
+
+    setTimeout(() => {
+      (event.target as HTMLIonRefresherElement).complete();
+    }, 1500);
+  }
+
+  carga() {
+    Swal.fire({
+      imageUrl: 'https://i.pinimg.com/originals/6b/e0/89/6be0890f52e31d35d840d4fe2e10385b.gif',
+      imageHeight: 100,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      heightAuto: false,
     });
+
+    setTimeout(() => {
+      this.resetearCampos();
+      Swal.close();
+    }, 1500);
+  }
+
+  resetearCampos() {
+    this.viajes.forEach(viaje => (viaje.selected = false));
   }
 }

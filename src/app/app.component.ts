@@ -55,7 +55,8 @@ export class AppComponent {
       '/viajes-c', 
       '/viajes-p',
       '/register',
-      '/login' 
+      '/login' ,
+      '/createviaje'
     ];
 
     // Verifica si la ruta actual está en la lista de rutas de menú
