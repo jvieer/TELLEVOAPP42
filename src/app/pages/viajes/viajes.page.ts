@@ -33,7 +33,8 @@ export class ViajesPage implements OnInit {
     private router: Router,
     private viajesService: ViajesService,
     private http: HttpClient,
-    private transService: TranslateService
+    private transService: TranslateService,
+    private translate: TranslateService
   ) {
     this.langs = this.transService.getLangs();
 
@@ -178,5 +179,18 @@ export class ViajesPage implements OnInit {
 
   changeLangs(event: any){
     this.transService.use(event.detail.value);
+  }
+
+
+  traducirTexto(texto: string): string {
+    // Aquí puedes usar tus propias lógicas para la traducción
+    if (texto === 'ruta') {
+      return 'Translation for ruta';
+    } else if (texto === 'Aceptar') {
+      return 'Translation for Aceptar';
+    } else {
+      // Usa el servicio de traducción para otros casos
+      return this.translate.instant(texto);
+    }
   }
 }

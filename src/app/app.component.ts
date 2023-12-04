@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/firebase/auth.service';
@@ -9,65 +9,72 @@ import { AuthService } from './services/firebase/auth.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-
 export class AppComponent {
-  showMenu: boolean = true; // Mostrar el menú por defecto
-  
-  public appPages = [
-    { title: 'Inicio', url: 'home', icon: 'home' },
-    { title: 'Jugadores', url: 'jugadores', icon: 'people-circle' },
-    { title: 'Equipos', url: 'equipos', icon: 'people' },
-    { title: 'API', url: 'apihome', icon: 'people' },
-    { title: 'Estadisticas', url: 'estadisticas', icon: 'analytics' },
-    { title: 'Campeon', url: 'campeon', icon: 'medal' },
-    { title: 'Cerrar Sesión', url: 'login', icon: 'log-out' },
-  ];
-  public appApi = [
-    { title: 'Home', url: 'apihome', icon: 'home' },
-    { title: 'List', url: 'apilist', icon: 'people-circle' },
-    { title: 'Add', url: 'apiadd', icon: 'people' },
-    { title: 'Delete', url: 'apidelete', icon: 'people' },
-    { title: 'Detail', url: 'apidetail', icon: 'analytics' },
-    { title: 'Update', url: 'apiupdate', icon: 'analytics' },
-    { title: 'Cerrar Sesión', url: 'login', icon: 'log-out' },
-  ];
-  
+  showMenu: boolean = true;
 
-  constructor(private authService: AuthService,private router: Router,private menuController : MenuController,private transService : TranslateService){
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private menuController: MenuController,
+    private transService: TranslateService
+  ) {
     this.transService.setDefaultLang('es');
-    this.transService.addLangs(['fr','en','ja']);
-  }
-  
-  mostrarMenu(){
-    return this.router.url !== '/login';
+    this.transService.addLangs(['fr', 'en', 'ja']);
+
+    // Escucha los cambios de la ruta para determinar si mostrar o no el menú
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showMenu = this.shouldShowMenu(event.urlAfterRedirects || '');
+      }
+    });
   }
 
-  mostrarMenuApi(){
-    const aux = ['apihome','apiadd','apilist','apidelete','apiupdate','apidetail']
-    return aux.includes(this.router.url.substring(1));
-    //return this.router.url == '/apihome';
+  shouldShowMenu(url: string): boolean {
+    // Define las rutas en las que deseas mostrar el menú
+    const menuRoutes = [
+      '/home', 
+      '/perfil', 
+      '/api', 
+      '/confirmacion', 
+      '/detalleusuarios', 
+      '/elegirconductor', 
+      '/eliminarconductor', 
+      '/elimusuarios', 
+      '/escanearqr', 
+      '/generarqr', 
+      '/agregar', 
+      '/agregarconductor', 
+      '/agregarusuarios', 
+      '/misviajes', 
+      '/registro-c', 
+      '/seguimiento',  
+      '/tomarviaje', 
+      '/usuarios20', 
+      '/viajes', 
+      '/viajes-c', 
+      '/viajes-p',
+      '/register'
+    ];
+
+    // Verifica si la ruta actual está en la lista de rutas de menú
+    return menuRoutes.some((route) => url.startsWith(route));
   }
- 
+
   redirigirSegunUsuario() {
-    // Aquí deberías obtener el usuario actual, puedes usar el servicio de autenticación
     const user = this.authService.getCurrentUserId();
-
-    // Llamas a la función para redirigir según el tipo de usuario
     this.authService.handleUserRedirect(user);
   }
+
   logout() {
     this.authService.logout();
   }
-  goToUserTypePage() {
-    // Obtiene el tipo de usuario almacenado en el localStorage
-    const userType = localStorage.getItem('userType');
 
-    // Redirige al usuario según el tipo almacenado
+  goToUserTypePage() {
+    const userType = localStorage.getItem('userType');
     if (userType) {
       this.router.navigate([userType]);
     } else {
       console.error('Tipo de usuario no almacenado en el localStorage');
-      // Puedes manejar el caso en el que el tipo de usuario no está almacenado
     }
-}
+  }
 }

@@ -1,6 +1,4 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Camera, CameraResultType } from '@capacitor/camera';
-import { CameraSource } from '@capacitor/camera/dist/esm/definitions';
 import { TranslateService } from '@ngx-translate/core';
 import jsQR from 'jsqr';
 import { ToastController, LoadingController, Platform } from '@ionic/angular';
