@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IonRefresher } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/firebase/auth.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -135,5 +136,16 @@ export class LoginPage implements OnInit {
   }
   logout() {
     this.AuthService.logout();
+  }
+
+  doRefresh(event: CustomEvent) {
+    // Muestra un mensaje o indicador de recarga
+    this.carga();
+  
+    // Simula un proceso de recarga (puedes reemplazarlo con tu lógica real)
+    setTimeout(() => {
+      // Cierra el indicador de recarga
+      (event.target as HTMLIonRefresherElement).complete();
+    }, 1500); // Cambia el tiempo de espera según tus necesidades
   }
 }

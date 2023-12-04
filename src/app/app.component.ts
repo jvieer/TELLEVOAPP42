@@ -12,6 +12,7 @@ import { AuthService } from './services/firebase/auth.service';
 export class AppComponent {
   showMenu: boolean = true;
 
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -53,7 +54,8 @@ export class AppComponent {
       '/viajes', 
       '/viajes-c', 
       '/viajes-p',
-      '/register'
+      '/register',
+      '/login' 
     ];
 
     // Verifica si la ruta actual está en la lista de rutas de menú
@@ -68,6 +70,8 @@ export class AppComponent {
   logout() {
     this.authService.logout();
   }
+
+  // Método para resetear el formulario de inicio de sesión
 
   goToUserTypePage() {
     const userType = localStorage.getItem('userType');
