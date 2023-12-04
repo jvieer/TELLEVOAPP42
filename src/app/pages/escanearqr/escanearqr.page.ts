@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import jsQR from 'jsqr';
 import { ToastController, LoadingController, Platform } from '@ionic/angular';
+import { AuthService } from 'src/app/services/firebase/auth.service';
+
 
 @Component({
   selector: 'app-escanearqr',
@@ -28,7 +30,8 @@ export class EscanearqrPage {
     private transService: TranslateService,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
-    private plt: Platform
+    private plt: Platform,
+    private authService: AuthService 
   ) {
     this.langs = this.transService.getLangs();
   }
@@ -94,6 +97,9 @@ export class EscanearqrPage {
         this.scanActive = false;
         this.scanResult = code.data as string;
         this.showQrToast();
+
+        // Guarda la información del código QR en Firestore
+        await this.authService.saveQRCodeInformation(this.scanResult);
       } else {
         if (this.scanActive) {
           requestAnimationFrame(this.scan.bind(this));
@@ -103,7 +109,6 @@ export class EscanearqrPage {
       requestAnimationFrame(this.scan.bind(this));
     }
   }
-
   async showQrToast() {
     const toast = await this.toastCtrl.create({
       message: '¡Código QR escaneado exitosamente!',

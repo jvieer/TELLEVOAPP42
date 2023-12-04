@@ -100,4 +100,22 @@ async logout() {
   getCurrentUserId() {
     return this.auth.currentUser?.then(user => user?.uid);
   }
+
+  async saveQRCodeInformation(data: string) {
+    try {
+      const user = await this.auth.currentUser;
+      if (user) {
+        const uid = user.uid;
+        if (uid) {
+          // Guarda la información en la colección "codigoqr" en Firestore
+          await this.firestore.collection('codigoqr').doc(uid).set({
+            data: data,
+            timestamp: new Date(),
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error al guardar la información del código QR', error);
+    }
+  }
 }
