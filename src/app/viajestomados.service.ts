@@ -11,7 +11,11 @@ export class ViajesTomadosService {
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
-  createViajeTomado(viajeData: any): Observable<any> {
+  createViajeTomado(viajeData: any, userId: string): Observable<any> {
+    // Agrega el UID del usuario a los datos del viaje
+    viajeData.userId = userId;
+  
+    // Ahora guarda los datos en Firestore
     return from(this.firestore.collection('viajes').add(viajeData));
   }
 
@@ -21,5 +25,8 @@ export class ViajesTomadosService {
 
   eliminarViaje(viajeId: string) {
     return this.firestore.collection('viajes').doc(viajeId).delete();
+  }
+  getViajesTomadosByUserId(userId: string): Observable<any[]> {
+    return this.firestore.collection<any>('viajes', ref => ref.where('userId', '==', userId)).valueChanges();
   }
 }

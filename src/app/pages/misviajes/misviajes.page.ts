@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ViajesTomadosService } from 'src/app/viajestomados.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/firebase/auth.service';
+
 
 @Component({
   selector: 'app-misviajes',
@@ -12,23 +14,39 @@ import { Router } from '@angular/router';
 export class MisviajesPage implements OnInit {
   misViajes: any[] = [];
 
-  constructor(private viajesTomadosService: ViajesTomadosService) {}
+  constructor(
+    private viajesTomadosService: ViajesTomadosService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.loadMisViajes();
   }
 
   async loadMisViajes() {
-    this.viajesTomadosService.getViajesTomados().subscribe(
-      data => {
-        console.log('Datos recibidos:', data);
-        this.misViajes = data || [];
-      },
-      error => {
-        console.error('Error al cargar los viajes tomados', error);
+    try {
+      // Obtén el UID del usuario actual
+      const userId = await this.authService.getCurrentUserId();
+
+      if (userId) {
+        // Llama al servicio para obtener solo los viajes del usuario actual
+        this.viajesTomadosService.getViajesTomadosByUserId(userId).subscribe(
+          data => {
+            console.log('Datos recibidos:', data);
+            this.misViajes = data || [];
+          },
+          error => {
+            console.error('Error al cargar los viajes tomados', error);
+          }
+        );
+      } else {
+        console.error('No se pudo obtener el UID del usuario');
       }
-    );
+    } catch (error) {
+      console.error('Error al obtener el UID del usuario', error);
+    }
   }
+
   async eliminarViaje(id: string) {
     try {
       await this.viajesTomadosService.eliminarViaje(id);
