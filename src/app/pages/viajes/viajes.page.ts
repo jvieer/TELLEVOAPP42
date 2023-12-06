@@ -177,10 +177,11 @@ export class ViajesPage implements OnInit {
   }
 
 
-  changeLangs(event: any){
-    this.transService.use(event.detail.value);
+  changeLanguage(event: any) {
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
-
 
   traducirTexto(texto: string): string {
     // Aquí puedes usar tus propias lógicas para la traducción

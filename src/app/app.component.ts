@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/firebase/auth.service';
+import { take } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,6 @@ import { AuthService } from './services/firebase/auth.service';
 export class AppComponent {
   showMenu: boolean = true;
 
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -21,6 +22,10 @@ export class AppComponent {
   ) {
     this.transService.setDefaultLang('es');
     this.transService.addLangs(['fr', 'en', 'ja']);
+
+  const savedLang = localStorage.getItem('appLang') || 'es';
+  console.log('Saved Language:', savedLang);
+  this.transService.use(savedLang);  // Establecer el idioma desde localStorage
 
     // Escucha los cambios de la ruta para determinar si mostrar o no el menú
     this.router.events.subscribe((event) => {
@@ -59,9 +64,20 @@ export class AppComponent {
       '/createviaje'
     ];
 
+
+    
     // Verifica si la ruta actual está en la lista de rutas de menú
     return menuRoutes.some((route) => url.startsWith(route));
   }
+
+
+
+  changeLanguage(lang: string) {
+    console.log('Changing language to:', lang);
+    this.transService.use(lang);
+    localStorage.setItem('appLang', lang);
+  }
+
 
   redirigirSegunUsuario() {
     const user = this.authService.getCurrentUserId();

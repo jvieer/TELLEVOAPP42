@@ -21,8 +21,9 @@ export default class ViajesPPage implements OnInit {
     this.router.navigate(['viajes-p']);
   }
 
-  changeLangs(event: any){
-    this.transService.use(event.detail.value);
+  changeLanguage(event: any) {
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
-
 }

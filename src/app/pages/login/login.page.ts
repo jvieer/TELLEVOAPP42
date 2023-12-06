@@ -76,8 +76,10 @@ export class LoginPage implements OnInit {
     }, 1500); // Cambia el tiempo de espera según tus necesidades
   }
 
-  changeLangs(event: any){
-    this.transService.use(event.detail.value);
+  changeLanguage(event: any) {
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
   async recoverPassword() {
     const email = this.loginForm.get('email')?.value;

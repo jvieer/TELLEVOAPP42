@@ -16,8 +16,10 @@ export class GenerarqrPage implements OnInit {
 
   ngOnInit() {
   }
-  changeLangs(event: any){
-    this.transService.use(event.detail.value);
+  changeLanguage(event: any) {
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
 
 }

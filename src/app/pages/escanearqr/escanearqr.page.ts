@@ -36,10 +36,12 @@ export class EscanearqrPage {
     this.langs = this.transService.getLangs();
   }
 
-  changeLangs(event: any) {
-    this.transService.use(event.detail.value);
+  changeLanguage(event: any) {
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
-
+  
   ngAfterViewInit() {
     if (this.canvas) {
       this.canvasElement = this.canvas.nativeElement;
