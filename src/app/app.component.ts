@@ -1,10 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/firebase/auth.service';
-import { take } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
